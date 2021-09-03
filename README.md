@@ -20,6 +20,12 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 - **[Getting started]()**
 - **[Installation]()**
 
+### 🛠 Tecnologias
+
+As seguintes ferramentas foram usadas na construção do projeto:
+
+- [React](https://pt-br.reactjs.org/)
+
 ## Roadmap
 
 If Unform currently doesn't have a certain feature you think it's awesome, be sure to check out the [roadmap]() to see if this is already planned for the future. Otherwise, we recommend you [create a discussion](https://github.com/unform/unform/discussions/new?category=ideas) describing your enhancement request.
