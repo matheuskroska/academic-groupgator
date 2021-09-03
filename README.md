@@ -20,7 +20,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 - **[Getting started]()**
 - **[Installation]()**
 
-## Tecnologias
+## Tech
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
