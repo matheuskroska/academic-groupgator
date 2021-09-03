@@ -7,10 +7,10 @@
 <p align="center">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown 🐊</p>
 
 <div align="center">
-<img alt="GitHub Last Commit" src="https://img.shields.io/github/last-commit/matheuskroska/groupgator" />
+  <img alt "React Project" src="https://badges.aleen42.com/src/react.svg"/>
+  <img alt="GitHub Last Commit" src="https://img.shields.io/github/last-commit/matheuskroska/groupgator" />
   <img alt="GitHub Contributors" src="https://img.shields.io/github/contributors/matheuskroska/groupgator" />
   <img alt="Github License" src="https://img.shields.io/github/license/matheuskroska/groupgator" />
-
 </div>
 
 ## Overview
