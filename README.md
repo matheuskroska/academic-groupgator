@@ -20,15 +20,29 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 - **[Getting started]()**
 - **[Installation]()**
 
-### 🛠 Tecnologias
+## Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
 - [React](https://pt-br.reactjs.org/)
 
-### Features
+## Features
 
 - [x] Faz alguma coisa
 - [x] Faz alguma coisa
 - [ ] Faz alguma coisa
 
+## Contributors
+
+<a href="https://github.com/matheuskroska/groupgator/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=matheuskroska/groupgator" />
+</a>
+
+<!--  
+ <img style="border-radius: 50%;" src="https://place-hold.it/100" width="100px;" alt=""/>
+ <b>nome autor</b></sub><a href="" title="Autor"🐊</a>
+
+[![Twitter Badge](https://img.shields.io/badge/-@teste-1ca0f1?style=flat-square&labelColor=1ca0f1&logo=twitter&logoColor=white&link=https://twitter.com/teste)](https://twitter.com/teste) [![Linkedin Badge](https://img.shields.io/badge/-Teste-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/teste/)](https://www.linkedin.com/in/teste/) 
+[![Gmail Badge](https://img.shields.io/badge/-teste@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:teste@gmail.com)](mailto:teste@gmail.com)
+
+ -->
