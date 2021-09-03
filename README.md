@@ -7,7 +7,8 @@
 <p align="center">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown 🐊</p>
 
 <div align="center">
-
+<img alt="GitHub Last Commit" src="https://img.shields.io/github/last-commit/matheuskroska/groupgator" />
+  <img alt="GitHub Contributors" src="https://img.shields.io/github/contributors/matheuskroska/groupgator" />
 
 </div>
 
@@ -17,13 +18,6 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 - **[Getting started]()**
 - **[Installation]()**
-
-Want to test Unform before using it?
-
-- **[React Playground]()**
-- **[React Native Playground]()**
-
-_ps: not available with React Native Web or Expo Web, use the iOS/Android devices in Expo Snack._
 
 ## Roadmap
 
