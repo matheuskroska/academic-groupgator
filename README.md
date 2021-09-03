@@ -22,9 +22,11 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 ## Tech
 
-As seguintes ferramentas foram usadas na construção do projeto:
+As seguintes bibliotecas foram usadas na construção do projeto:
 
-- [React](https://pt-br.reactjs.org/) + [Styled Components](https://styled-components.com/)
+- [React](https://pt-br.reactjs.org/)
+- [React Router](https://reactrouter.com/)
+- [Styled Components](https://styled-components.com/)
 
 ## Features
 
