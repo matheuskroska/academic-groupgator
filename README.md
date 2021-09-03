@@ -9,6 +9,7 @@
 <div align="center">
 <img alt="GitHub Last Commit" src="https://img.shields.io/github/last-commit/matheuskroska/groupgator" />
   <img alt="GitHub Contributors" src="https://img.shields.io/github/contributors/matheuskroska/groupgator" />
+  <img alt="Github License" src="https://img.shields.io/github/license/matheuskroska/groupgator" />
 
 </div>
 
