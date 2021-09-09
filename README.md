@@ -30,9 +30,9 @@ As seguintes bibliotecas foram usadas na construção do projeto:
 
 ## Features
 
-- [x] Faz alguma coisa 1
 - [x] Faz alguma coisa
-- [ ] Faz alguma coisa
+- [x] Faz alguma coisa
+- [x] Faz alguma coisa
 
 ## Contributors
 
