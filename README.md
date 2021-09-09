@@ -33,7 +33,7 @@ As seguintes bibliotecas foram usadas na construção do projeto:
 - [x] Faz alguma coisa
 - [x] Faz alguma coisa
 - [x] Faz alguma coisa
-
+ 
 ## Contributors
 
 <a href="https://github.com/matheuskroska/groupgator/graphs/contributors">
