@@ -30,10 +30,13 @@ As seguintes bibliotecas foram usadas na construção do projeto:
 
 ## Features
 
-- [x] Faz alguma coisa 1
 - [x] Faz alguma coisa
 - [x] Faz alguma coisa
+<<<<<<< HEAD
 - [x] Outra coisa
+=======
+- [x] Faz alguma coisa
+>>>>>>> 5bf6f4a38978bd2ed2ff07b36c79f310d31629f8
 
 ## Contributors
 
