@@ -15,7 +15,7 @@
 
 ## Overview
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+GroupGator é uma rede social para conectar e encontrar pessoas que buscam praticar alguma atividade em grupo! Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
 - **[Getting started]()**
 - **[Installation]()**
@@ -32,12 +32,10 @@ As seguintes bibliotecas foram usadas na construção do projeto:
 
 - [x] Faz alguma coisa
 - [x] Faz alguma coisa
-- [ ] Faz alguma coisa
-
+- [x] Faz alguma coisa
+ 
 ## Contributors
 
 <a href="https://github.com/matheuskroska/groupgator/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=matheuskroska/groupgator" />
 </a>
-
-
