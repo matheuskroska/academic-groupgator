@@ -27,6 +27,7 @@ As seguintes bibliotecas foram usadas na construção do projeto:
 - [React](https://pt-br.reactjs.org/)
 - [React Router](https://reactrouter.com/)
 - [React Hooks](https://pt-br.reactjs.org/docs/hooks-intro.html)
+- [Firebase Firestore](https://console.firebase.google.com/)
 - [Styled Components](https://styled-components.com/)
 
 
