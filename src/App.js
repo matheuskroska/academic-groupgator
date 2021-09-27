@@ -5,6 +5,7 @@ import firebase from './firebase-config';
 function App() {
 
     const [estado, setEstado] = useState();
+    const [pesquisa, setPesquisa] = useState('');
     
     function useUser() {
       const [usuario, setUser] = useState([]);
@@ -53,6 +54,8 @@ function App() {
             insertDate: item.data().insertDate
           });
         });
+
+        console.log(lista)
       })
     }
 
@@ -61,10 +64,17 @@ function App() {
   return (
     <div>
       <button onClick={inserirUsuario}>Inserir Usuario</button><br></br>
-      <input placeholder="valor dinamico" onChange={e => setEstado(e.target.value)}></input>
+      <input placeholder="nome" onChange={e => setEstado(e.target.value)}></input>
+      <input placeholder="pesquisar..." onChange={e => {setPesquisa(e.target.value)}} ></input>
       <button onClick={listarUsuario}>Listar Usuario</button>
       <br></br>
-        {times.length > 0 ? times.map( times => <div key={times.id}><div>{times.nome}</div><div>{times.insertDate.toString()}</div></div>) : <>Não existe registro no banco</>}</div> 
+        {times.length > 0 ? times.filter((val) => {
+          console.log(pesquisa)
+          if(pesquisa == "") {
+            return val
+          } else if (val.nome.toLowerCase().includes(pesquisa.toLowerCase())) {
+            return val
+          }}).map( times => <div key={times.id}><div>{times.nome}</div><div>{times.insertDate.toString()}</div></div>) : <>Não existe registro no banco</>}</div> 
         // componente com props ou componente de mensagem vazio
   );
 }
