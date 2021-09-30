@@ -2,10 +2,6 @@ import React from 'react'
 import {NavContainer,NavWrapper,NavLeft,NavRight,NavCenter, NavProfile} from './Header.elements'
 import { useState } from 'react';
 
-
-
-
-
 export const Header = () => {
 
     const [logado, setLogado] = useState('true');
