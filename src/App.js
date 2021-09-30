@@ -30,7 +30,9 @@ const GlobalStyle = createGlobalStyle`
         display: block;
     }
     body {
+        height:100vh;
         line-height: 1;
+        background: linear-gradient(180deg, #A1D3A6 35.94%, rgba(161, 211, 166, 0) 100%);
     }
     ol, ul {
         list-style: none;
