@@ -1,21 +1,25 @@
 import React from 'react'
-import {NavContainer,NavWrapper,NavLeft,NavRight,NavCenter, NavProfile} from './Header.elements'
+import {NavContainer,NavWrapper,NavLeft,NavRight,NavCenter, NavProfile, NavSidebar} from './Header.elements'
 import { useState } from 'react';
 
 export const Header = () => {
 
-    const [logado, setLogado] = useState('true');
+    const [isOpen, setOpen] = useState(false);
+    const [logado, setLogado] = useState(true);
+
+    const toggleSidebar = () => setOpen(!isOpen);
+    console.log(isOpen)
 
     return (
         <>
-            <NavContainer>
-                <NavWrapper>
-                    <NavLeft>
-                        <img src="https://place-hold.it/90x50&text=logo"></img>
-                        <p>GroupGator</p>
-                    </NavLeft>
+            <NavContainer >
+                <NavWrapper logado={logado}>                 
                     {!logado ? (
                     <>
+                        <NavLeft>
+                            <img src="https://place-hold.it/90x50&text=logo"></img>
+                            <p>GroupGator</p>
+                        </NavLeft>
                         <NavCenter>
                             <ul>
                                 <li>
@@ -38,7 +42,15 @@ export const Header = () => {
                         </NavRight>
                     </>
                     ):
-                    <>
+                    <>  
+                        
+                        
+                        <NavSidebar show={isOpen}>
+                        </NavSidebar>
+                        <NavLeft onClick={toggleSidebar}>
+                            <img src="https://place-hold.it/90x50&text=logo"></img>
+                            <p>GroupGator</p>
+                        </NavLeft> 
                         <NavCenter>
                             <select name="cars" id="cars">
                                 <option value="none" selected disabled hidden>Select uma categoria</option>

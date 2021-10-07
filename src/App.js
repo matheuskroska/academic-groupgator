@@ -1,7 +1,6 @@
 import {useState, useEffect} from "react";
 import firebase from './firebase-config';
-import {GlobalStyle, Header} from './components/index';
-
+import {GlobalStyle, Header, Container, Footer} from './components/index';
  
 function App() {
 
@@ -63,26 +62,28 @@ function App() {
     const times = useUser()
    
   return (
-    <div>
+    <>
       <GlobalStyle/>
       <Header></Header>
+      <Container>
+        <button onClick={inserirUsuario}>Inserir Usuario</button><br></br>
 
-      <button onClick={inserirUsuario}>Inserir Usuario</button><br></br>
+        <input placeholder="nome" onChange={e => setEstado(e.target.value)}></input>
 
-      <input placeholder="nome" onChange={e => setEstado(e.target.value)}></input>
+        <input placeholder="pesquisar..." onChange={e => {setPesquisa(e.target.value)}} ></input>
 
-      <input placeholder="pesquisar..." onChange={e => {setPesquisa(e.target.value)}} ></input>
-
-      <button onClick={listarUsuario}>Listar Usuario</button>
+        <button onClick={listarUsuario}>Listar Usuario</button>
       
         {times.length > 0 ? times.filter((val) => {
-          console.log(pesquisa)
-          if(pesquisa == "") {
-            return val
-          } else if (val.nome.toLowerCase().includes(pesquisa.toLowerCase())) {
-            return val
-          }}).map( times => <div key={times.id}><div>{times.nome}</div><div>{times.insertDate.toString()}</div></div>) : <>Não existe registro no banco</>}</div> 
-        // componente com props ou componente de mensagem vazio
+            console.log(pesquisa)
+            if(pesquisa == "") {
+              return val
+            } else if (val.nome.toLowerCase().includes(pesquisa.toLowerCase())) {
+              return val
+            }}).map( times => <div key={times.id}><div>{times.nome}</div><div>{times.insertDate.toString()}</div></div>) : <>Não existe registro no banco</>}    
+      </Container>
+      <Footer/> 
+    </>       
   );
 }
 
