@@ -1,2 +1,3 @@
 export {Header} from "./Header/Header";
-export {GlobalStyle} from "./globalStyle";
+export {Footer} from "./Footer/Footer";
+export {GlobalStyle, Container} from "./globalStyle";

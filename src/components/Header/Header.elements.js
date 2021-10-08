@@ -6,9 +6,7 @@ const NavBase = styled.div`
 `
 
 export const NavContainer = styled.div`
-    width: 100%;
-    margin: 0 auto;
-    background-color: #fff;
+   background-color:#fff;
 `
 
 export const NavWrapper = styled.div`
@@ -17,7 +15,17 @@ export const NavWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     padding: 30px 20px;
+    position: relative;
 `
+
+// export const NavWrapper = styled.div`
+//     max-width: ${props => props.logado ? '1130px' : '1280px'};
+//     margin: ${props => props.logado ? '0 0 0 auto' : '0 auto'};
+//     display: flex;
+//     justify-content: space-between;
+//     padding: 30px 20px;
+//     padding-left: ${props => props.logado ? '150px' : ''};
+// `
 
 export const NavLeft = styled(NavBase)`
     p {
@@ -54,5 +62,17 @@ export const NavProfile = styled(NavBase)`
         padding: 5px;
         white-space: nowrap;
     }
+`
 
+export const NavSidebar = styled.div`   
+    height: ${props => props.show ? "100vh" : "0vh"};
+    position: absolute;
+    width: 210px;
+    left: 0;
+    top: 110px;
+    opacity: ${props => props.show ? "1" : "0"};
+    transition: height 0.5s ease-in-out;
+    background-color: #fff;
+    background: linear-gradient(
+180deg, #66A571 0%, rgba(102, 165, 113, 0) 100%);
 `
