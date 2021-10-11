@@ -1,6 +1,7 @@
 import React from 'react'
 import {NavContainer,NavWrapper,NavLeft,NavRight,NavCenter, NavProfile, NavSidebar} from './Header.elements'
 import { useState } from 'react';
+import logo  from '../../img/logo.png';
 
 export const Header = () => {
 
@@ -17,7 +18,7 @@ export const Header = () => {
                     {!logado ? (
                     <>
                         <NavLeft>
-                            <img src="https://place-hold.it/90x50&text=logo"></img>
+                            <img src={logo} width="60" />
                             <p>GroupGator</p>
                         </NavLeft>
                         <NavCenter>
@@ -48,7 +49,7 @@ export const Header = () => {
                         <NavSidebar show={isOpen}>
                         </NavSidebar>
                         <NavLeft onClick={toggleSidebar}>
-                            <img src="https://place-hold.it/90x50&text=logo"></img>
+                            <img src={logo} width="60" />
                             <p>GroupGator</p>
                         </NavLeft> 
                         <NavCenter>

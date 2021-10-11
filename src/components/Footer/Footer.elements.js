@@ -20,6 +20,7 @@ export const FooterWrapper = styled.div`
     justify-content: center;
     padding: 10px 20px;
     position:relative;
+    
 `
 
 export const FooterRight = styled(FooterBase)`
@@ -28,6 +29,8 @@ export const FooterRight = styled(FooterBase)`
     height: 100%;
     top: 0;
     margin-right: 20px;
+    color: #66A571;
+    font-style: 'Roboto Condensed', sans-serif;
 `
 
 export const FooterCenter = styled(FooterBase)`
@@ -37,7 +40,11 @@ export const FooterCenter = styled(FooterBase)`
 
     li, a {
         padding: 10px;
-    }   
+        color: #66A571;
+        font-style: 'Roboto Condensed', sans-serif;
+        text-decoration: none;
+    }
+       
 `
 
 

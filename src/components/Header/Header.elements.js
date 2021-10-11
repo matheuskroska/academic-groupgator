@@ -30,12 +30,21 @@ export const NavWrapper = styled.div`
 export const NavLeft = styled(NavBase)`
     p {
         padding: 5px;
+        font-style: 'Roboto Condensed', sans-serif;
+        color: #66A571;
+        font-weight: bold;
+        font-size: 25px;
+
     }
 `
 
 export const NavRight = styled(NavBase)`
     a {
         padding: 5px;
+        text-decoration: none;
+        font-style: 'Roboto Condensed', sans-serif;
+        color: #66A571;
+
     }
 `
 
@@ -46,6 +55,10 @@ export const NavCenter = styled(NavBase)`
 
     li, a {
         padding: 10px;
+        color: #66A571;
+        font-weight: bold;
+        font-style: 'Roboto Condensed', sans-serif;
+        text-decoration: none;
     }
     
 `
