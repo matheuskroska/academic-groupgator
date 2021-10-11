@@ -35,6 +35,13 @@ h8{
     color: #335237;
 }
 
+h9{
+    font-style: 'Roboto Condensed', sans-serif;
+    font-size: 16px;
+    text-align: left;
+    color: #66A571;
+}
+
 .bSignIn{
     background-color: #66A571;
     color: white;
@@ -60,11 +67,80 @@ h8{
 .signIn{
     text-align: center;
     align-items: center;
-    font-size: 55px;
+    font-size: 40px;
     color: #66A571;
     width: 500px;
-    height: 400px;
+    height: 350px;
     background-color: #ffffff;
+    border-radius: 10px;
+    justify-content: center;
+    margin-left: 400px;
+    
+}
+
+.login{
+    text-align: center;
+    align-items: center;
+    font-size: 40px;
+    color: #66A571;
+    width: 500px;
+    height: 250px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    justify-content: center;
+    margin-left: 400px;
+    
+}
+
+.inputCadastro{
+    
+    width: 153px;
+    height: 20px;
+    margin: 0;
     border-radius: 10px;
 }
 
+.inputCadastro1{
+    
+    width: 325px;
+    height: 20px;
+    margin: 0;
+    border-radius: 10px;
+}
+
+.inputCadastro3{
+    
+    width: 53px;
+    height: 20px;
+    margin: 0;
+    border-radius: 10px;
+}
+
+.inputCadastro4{
+    
+    width: 254px;
+    height: 20px;
+    margin: 0;
+    border-radius: 10px;
+}
+
+::placeholder {
+    color: #66A571;
+    opacity: 1;
+    font-weight: bold; 
+
+  }
+  
+  .bCadastrar{
+    background-color: #66A571;
+    color: white;
+    border: none;
+    font-size: 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 5px;
+    width: 200px;
+    height: 30px;
+    
+}
