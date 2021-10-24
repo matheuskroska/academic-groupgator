@@ -1,5 +1,4 @@
-import React, {useState, useEffect, Component } from "react";
-import SignIn from '../SignIn'
+import React, {useState } from "react";
 import firebase from '../../firebase-config';
 import {Link} from 'react-router-dom';
 
@@ -9,20 +8,15 @@ function Login() {
 
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-
-  const deslogar = async (e) => {    
-    await firebase.auth().signOut();
-    //voltar para tela de inicio
-  }
-
+  
   const logar = async (e) => {    
     await firebase.auth().signInWithEmailAndPassword(email, senha)
     .then(()=>{
-      alert("entrou");
+      console.log("entrou");
     })
     .catch((error) =>{
       
-        alert("deu ruim");
+        console.log("deu ruim");
       
     })
   }
@@ -35,10 +29,9 @@ function Login() {
       <input class="inputCadastro1" type="email" placeholder="Email" onChange={ (e)=> {setEmail(e.target.value)}}></input><br></br>
       <input class="inputCadastro1" type="password" placeholder="Senha" onChange={ (e)=> {setSenha(e.target.value)}}></input><br></br>
       <h9>Esqueci a senha</h9> <br></br>
-      <button class="bCadastrar" onClick = {logar}> Login </button>
-      <Link to= '/Login' class="bLogin">Login</Link>
+      <Link to= '/pageUser' onClick = {logar} class="bLogin">Login</Link>
         
-        
+              
       </div>
     
   )

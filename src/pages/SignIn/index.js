@@ -1,13 +1,12 @@
-import React, {Component, useState, useEffect} from "react";
+import React, {useState} from "react";
 import firebase from '../../firebase-config';
-import {Link} from 'react-router-dom';
+
 
 
 function SignIn() {
 
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [msg, setMsg] = useState("");  
   const [nome, setNome] = useState("");  
   const [sobrenome, setSobrenome] = useState("");  
   const [ddd, setDdd] = useState("");  

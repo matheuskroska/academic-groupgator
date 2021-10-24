@@ -1,19 +1,64 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {NavContainer,NavWrapper,NavLeft,NavRight,NavCenter, NavProfile, NavSidebar} from './Header.elements'
-import { useState } from 'react';
 import logo  from '../../img/logo.png';
+import {BrowserRouter, Route, Switch, Link} from "react-router-dom";
+import '../../routes';
+import firebase from '../../firebase-config';
+import Button from '@material-ui/core/Button';
+import PowerSettingsNewOutlinedIcon from '@material-ui/icons/PowerSettingsNewOutlined';
+import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
+import VpnKeyOutlinedIcon from '@material-ui/icons/VpnKeyOutlined';
+import AccountCircleOutlinedIcon from '@material-ui/icons//AccountCircleOutlined';
+
+
 
 
 export const Header = () => {
 
     const [isOpen, setOpen] = useState(false);
-    const [logado, setLogado] = useState(true);
+    const [logado, setLogado] = useState(false);
+
+    const [name, setName] = useState();
+    const [mensagem, setMensagem] = useState(""); 
 
     const toggleSidebar = () => setOpen(!isOpen);
-    console.log(isOpen)
+    
+
+    const deslogar = async (e) => {
+        firebase.auth().signOut().then(() => {
+            console.log("saiu")
+          }).catch((error) => {
+          });
+    }
+
+
+
+    firebase.auth().onAuthStateChanged((user)=>{
+        let user_id;
+        if(user){
+            setLogado(true);
+            setMensagem("logado");
+            let uid = user.uid;
+            setName(user.email)
+            let lista = []
+            //where("userId", "==", uid)
+            firebase.firestore()
+            .collection('usuario')
+            .onSnapshot((snapshot) => {
+            const newUser = snapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data()
+            }))
+            })
+        }
+    });
+
+
 
     return (
-        <>
+<>
+    <BrowserRouter>
+        <Switch>
             <NavContainer >
                 <NavWrapper logado={logado}>                 
                     {!logado ? (
@@ -21,26 +66,53 @@ export const Header = () => {
                         <NavLeft>
                             <img src={logo} width="60" />
                             <p>GroupGator</p>
+                            <h6>{mensagem}</h6>
                         </NavLeft>
                         <NavCenter>
                             <ul>
                                 <li>
-                                    <a href="#">Home</a>
+                                    <Link to= '/' class="bHome">Home</Link>&nbsp;         
                                 </li>
                                 <li>
-                                    <a href="#">About</a>
+                                    <Link to= '/about' class="bAbout">About</Link>&nbsp;  
                                 </li>
                                 <li>
-                                    <a href="#">Contact</a>
+                                    <Link to= '/contact' class="bContact">Contact</Link>&nbsp;  
                                 </li>
                                 <li>
-                                    <a href="#">Member</a>
+                                    <Link to= '/member' class="bMember">Member</Link>&nbsp;  
                                 </li>   
                             </ul>
                         </NavCenter>
                         <NavRight>
-                            <a href="#" onClick={() => setLogado(true)}>Sign in</a>
-                            <a href="#">Login</a>
+                            <Button 
+                                onClick={() => console.log("oi")}
+                                style={{
+                                    color: '#66A571',
+                                    
+                                }}
+                                startIcon={<VpnKeyOutlinedIcon/>}
+                                
+                                component={Link}
+                                to = "/SignIn"
+                            >
+                                
+                                Sing In
+                            </Button>&nbsp;  &nbsp; 
+                            <Button 
+                                onClick={() => console.log("oi")}
+                                style={{
+                                    color: '#66A571',
+                                    
+                                }}
+                                startIcon={<AccountCircleOutlinedIcon/>}
+                                
+                                component={Link}
+                                to = "/Login"
+                            >
+                                
+                                Login
+                            </Button>&nbsp;                              
                         </NavRight>
                     </>
                     ):
@@ -65,16 +137,17 @@ export const Header = () => {
                         </NavCenter>
                         <NavRight>
                             <NavProfile>
-                                <img src="https://place-hold.it/50x50&text=user"/>
-                                <p>Joca da Motoca</p>
-                            </NavProfile>
-                                <a href="#" >💿</a>
-                                <a href="#" onClick={() => setLogado(false)}>📀</a>
+                                <p class="classNameUser">{name}</p>&nbsp;
+                                </NavProfile>&nbsp;&nbsp;
+                                <Link to= '/#' class="bConf" > <SettingsOutlinedIcon/></Link>&nbsp;
+                                <Link to= '/' onClick={() => deslogar()}> <PowerSettingsNewOutlinedIcon/></Link>&nbsp;
                         </NavRight>
                     </>                             
                     }              
                 </NavWrapper>
             </NavContainer>
+        </Switch>
+    </BrowserRouter>
         </>     
     )
 }

@@ -2,8 +2,8 @@ import React from "react";
 
 function Member(){
     return(
-        <div className="Member">
-            Sobre
+        <div className="member">
+            member
         </div>
     )
 
