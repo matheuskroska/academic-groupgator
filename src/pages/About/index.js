@@ -6,6 +6,7 @@ function About() {
 
             <h1 style={{
                 marginTop: "3%",
+                marginBottom: "3%",
                 fontSize: "30px"
             }} >Sobre</h1>
             <br />
@@ -35,16 +36,12 @@ function About() {
                 agilidade decisória. Ainda assim, existem dúvidas a respeito de como a consolidação
                 das estruturas obstaculiza a apreciação
                 da importância das diretrizes de desenvolvimento para o futuro.
-                Assim mesmo, a necessidade de renovação processual deve passar por modificações
-                independentemente da gestão inovadora da qual
-                fazemos parte. Acima de tudo, é fundamental ressaltar que a consulta aos diversos
-                militantes nos obriga à análise das formas
-                de ação.
+
             </p>
             <br />
-            <p style={{ fontSize: "18px" }}>
+            <h2 style={{ fontSize: "18px", marginTop: "3%" }}>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&mdash;  Vinicius Taborda (Commercial Manager)
-            </p>
+            </h2>
 
 
             <table style={{
@@ -80,7 +77,7 @@ function About() {
                 </tbody>
             </table>
 
-        </div>
+        </div >
     )
 
 }
