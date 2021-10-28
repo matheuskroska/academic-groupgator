@@ -9,6 +9,7 @@ export const Container = styled.div`
 `
 
 export const GlobalStyle = createGlobalStyle`
+
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
     a, abbr, acronym, address, big, cite, code,
@@ -29,6 +30,7 @@ export const GlobalStyle = createGlobalStyle`
         font: inherit;
         vertical-align: baseline;
     }
+    @import url('fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
     /* HTML5 display-role reset for older browsers */
     article, aside, details, figcaption, figure, 
     footer, header, hgroup, menu, nav, section {
@@ -40,6 +42,7 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0 auto;
         min-height: 100vh;
         overflow: hidden;
+        font-family : 'Roboto Condensed', sans-serif;
         background: linear-gradient( 
 180deg,#A1D3A6 35.94%,rgba(161,211,166,0) 100%);
     }
