@@ -20,6 +20,16 @@ export const FooterWrapper = styled.div`
     justify-content: center;
     padding: 10px 20px;
     position:relative;
+    
+    a {
+        color: #66A571;
+        font-size: 18px;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color:green;
+    }
 `
 
 export const FooterRight = styled(FooterBase)`
@@ -28,6 +38,11 @@ export const FooterRight = styled(FooterBase)`
     height: 100%;
     top: 0;
     margin-right: 20px;
+
+    p {
+        color: #66A571;
+        font-size: 16px;
+    }
 `
 
 export const FooterCenter = styled(FooterBase)`

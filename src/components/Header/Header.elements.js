@@ -7,6 +7,7 @@ const NavBase = styled.div`
 
 export const NavContainer = styled.div`
    background-color:#fff;
+    box-shadow: rgb(50 50 93 / 25%) 0px 6px 12px -2px, rgb(0 0 0 / 30%) 0px 3px 7px;
 `
 
 export const NavWrapper = styled.div`
@@ -14,29 +15,54 @@ export const NavWrapper = styled.div`
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    padding: 30px 20px;
+    padding: 20px 20px;
     position: relative;
 `
-
-// export const NavWrapper = styled.div`
-//     max-width: ${props => props.logado ? '1130px' : '1280px'};
-//     margin: ${props => props.logado ? '0 0 0 auto' : '0 auto'};
-//     display: flex;
-//     justify-content: space-between;
-//     padding: 30px 20px;
-//     padding-left: ${props => props.logado ? '150px' : ''};
-// `
 
 export const NavLeft = styled(NavBase)`
     p {
         padding: 5px;
+        color: #66A571;
+        font-weight: bold;
+        font-size:18px;
+        margin-left: 10px;
     }
 `
 
 export const NavRight = styled(NavBase)`
     a {
-        padding: 5px;
+    padding: ${props => props.paddingAnchor || "5px 10px"};
+    display: flex;
+    text-decoration: none;
+    font-size: 18px;
+    color: #66A571;
+    font-weight: bold;
     }
+
+    a:hover {
+        color: green;
+    }
+
+    svg {
+        padding-right: ${props => props.paddingSVG || "10px"};
+        width: 22px;
+        height: 22px;
+    }
+
+    p {
+        color: #66A571;
+        font-weight: bold;
+        text-transform: capitalize;
+        margin-right: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    div {
+        display: flex;
+        align-items: center;
+    }
+    
 `
 
 export const NavCenter = styled(NavBase)`
@@ -61,6 +87,11 @@ export const NavProfile = styled(NavBase)`
     p {
         padding: 5px;
         white-space: nowrap;
+    } 
+
+    svg {
+        width: 50px!important;
+        height: 50px!important;
     }
 `
 
@@ -69,7 +100,7 @@ export const NavSidebar = styled.div`
     position: absolute;
     width: 210px;
     left: 0;
-    top: 110px;
+    top: 130px;
     opacity: ${props => props.show ? "1" : "0"};
     transition: height 0.5s ease-in-out;
     background-color: #fff;

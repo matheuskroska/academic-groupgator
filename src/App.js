@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import firebase from './firebase-config';
-import { GlobalStyle, Header, Container, Footer } from './components/index';
-import Note from "./components/DefaultCard/Card";
+import { GlobalStyle, Header, Container, Footer} from './components/index';
+import {Login, Register} from './pages/index';
+import {Routes} from "./routes";
 
 
 function App() {
@@ -62,30 +63,41 @@ function App() {
     }
 
     const times = useUser()
+
+    // firebase.auth().onAuthStateChanged((user) => {
+
+    //   if(user) {
+    //     console.log("logado");
+    //   }
+
+    // })
    
   return (
     <>
       <GlobalStyle/>
-      <Header/>
-        <Container>
-            
-          <button onClick={inserirUsuario}>Inserir Usuario</button><br></br>
+      <Routes/>
+      {/* <Header/>
+      <Container>
+          <Register/>
+          <Login/>
+        <button onClick={inserirUsuario}>Inserir Usuario</button><br></br>
+        <Note title={"Jogo do joão"}/>
 
-          <input placeholder="nome" onChange={e => setEstado(e.target.value)}></input>
+        <input placeholder="nome" onChange={e => setEstado(e.target.value)}></input>
 
-          <input placeholder="pesquisar..." onChange={e => {setPesquisa(e.target.value)}} ></input>
+        <input placeholder="pesquisar..." onChange={e => {setPesquisa(e.target.value)}} ></input>
 
-          <button onClick={listarUsuario}>Listar Usuario</button>
-        
-          {times.length > 0 ? times.filter((val) => {
-              console.log(pesquisa)
-              if(pesquisa == "") {
-                return val
-              } else if (val.nome.toLowerCase().includes(pesquisa.toLowerCase())) {
-                return val
-              }}).map( times => <div key={times.id}><div>{times.nome}</div><div>{times.insertDate.toString()}</div></div>) : <>Não existe registro no banco</>}    
-        </Container>
-      <Footer/> 
+        <button onClick={listarUsuario}>Listar Usuario</button>
+      
+        {times.length > 0 ? times.filter((val) => {
+            console.log(pesquisa)
+            if(pesquisa == "") {
+              return val
+            } else if (val.nome.toLowerCase().includes(pesquisa.toLowerCase())) {
+              return val
+            }}).map( times => <div key={times.id}><div>{times.nome}</div><div>{times.insertDate.toString()}</div></div>) : <>Não existe registro no banco</>}
+      </Container>
+      <Footer/>  */}
     </>       
   );
 }

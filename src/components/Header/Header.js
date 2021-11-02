@@ -1,23 +1,47 @@
-import React from 'react'
+import React, {useContext, useState} from 'react'
 import {NavContainer,NavWrapper,NavLeft,NavRight,NavCenter, NavProfile, NavSidebar} from './Header.elements'
-import { useState } from 'react';
+import firebase from 'firebase';
+import { Redirect } from "react-router";
+import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../firebase-auth";
+import { MdVpnKey, MdOutlineLogin, MdPowerSettingsNew,MdAccountCircle, MdSettings, MdExpandMore } from "react-icons/md";
+import logo from '../../assets/Images/logo-groupgator.png';
 
 export const Header = () => {
 
     const [isOpen, setOpen] = useState(false);
-    const [logado, setLogado] = useState(true);
-
     const toggleSidebar = () => setOpen(!isOpen);
-    console.log(isOpen)
+    const { currentUser } = useContext(AuthContext);
+    const [name, setName] = useState('');
+
+    const signOut = () => {
+        firebase.auth().signOut();
+        return <Redirect to="/feed" />;
+    }
+
+    if (currentUser) {
+        console.log(currentUser.uid)
+        var docRef = firebase.firestore().collection("usuario").doc(currentUser.uid);
+
+        docRef.get().then((doc) => {
+            if (doc.exists) {
+                setName(doc.data().nome);
+            } else {
+                console.log("No such document!");
+            }
+        }).catch((error) => {
+            console.log("Error getting document:", error);
+        });
+    }
 
     return (
         <>
             <NavContainer >
-                <NavWrapper logado={logado}>                 
-                    {!logado ? (
+                <NavWrapper>                 
+                    {!currentUser ? (
                     <>
                         <NavLeft>
-                            <img src="https://place-hold.it/90x50&text=logo"></img>
+                            <img src={logo}></img>
                             <p>GroupGator</p>
                         </NavLeft>
                         <NavCenter>
@@ -37,18 +61,20 @@ export const Header = () => {
                             </ul>
                         </NavCenter>
                         <NavRight>
-                            <a href="#" onClick={() => setLogado(true)}>Sign in</a>
-                            <a href="#">Login</a>
+                            <NavLink exact activeClassName="active" to="/cadastro">
+                                     <MdVpnKey/><div>Sign-in</div>
+                             </NavLink>
+                            <NavLink exact activeClassName="active" to="/login">
+                                     <MdOutlineLogin/><div>Login</div>
+                            </NavLink>
                         </NavRight>
                     </>
                     ):
-                    <>  
-                        
-                        
+                    <>     
                         <NavSidebar show={isOpen}>
                         </NavSidebar>
                         <NavLeft onClick={toggleSidebar}>
-                            <img src="https://place-hold.it/90x50&text=logo"></img>
+                            <img src={logo}></img>
                             <p>GroupGator</p>
                         </NavLeft> 
                         <NavCenter>
@@ -61,13 +87,15 @@ export const Header = () => {
                             </select>
                             <a href="#">Crie um grupo</a>
                         </NavCenter>
-                        <NavRight>
+                        <NavRight paddingSVG="5px!important" paddingAnchor="0">
                             <NavProfile>
-                                <img src="https://place-hold.it/50x50&text=user"/>
-                                <p>Joca da Motoca</p>
+                                <a href="#"><MdAccountCircle/></a>
                             </NavProfile>
-                                <a href="#" >💿</a>
-                                <a href="#" onClick={() => setLogado(false)}>📀</a>
+                                <p>{name}
+                                    <MdExpandMore/>
+                                </p>
+                                <a href="#"><MdSettings/></a>
+                                <a href="#" onClick={() => signOut()}><MdPowerSettingsNew/></a>
                         </NavRight>
                     </>                             
                     }              

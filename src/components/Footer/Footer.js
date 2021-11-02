@@ -1,5 +1,6 @@
 import React from 'react'
 import {FooterContainer,FooterWrapper,FooterCenter,FooterRight} from './Footer.elements'
+import { NavLink } from "react-router-dom";
 
 export const Footer = () => {
     return (
@@ -9,13 +10,19 @@ export const Footer = () => {
                     <FooterCenter>
                         <ul>
                             <li>
-                                <a href="#">Sobre</a>
+                                 <NavLink exact activeClassName="active" to="/cadastro">
+                                     Sobre
+                                 </NavLink>
                             </li>
                             <li>
-                                <a href="#">FAQ</a>
+                                <NavLink exact activeClassName="active" to="/cadastro">
+                                     FAQ
+                                 </NavLink>
                             </li>
                             <li>
-                                <a href="#">Contato</a>
+                                <NavLink exact activeClassName="active" to="/cadastro">
+                                     Contato
+                                 </NavLink>
                             </li> 
                         </ul>
                     </FooterCenter>
