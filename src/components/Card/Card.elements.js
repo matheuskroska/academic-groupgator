@@ -173,7 +173,7 @@ export const CardButton = styled.div`
     css`
       min-width: initial;
       height:35px;
-      font-size: 18px;
+      font-size: 16px;
       text-decoration: none;
       padding: 0 5px 0 10px;
     `};

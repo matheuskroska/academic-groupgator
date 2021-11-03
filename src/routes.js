@@ -1,8 +1,9 @@
-import {Route, BrowserRouter as Router, Switch} from 'react-router-dom';
+import {Route, BrowserRouter as Router, Switch, useLocation} from 'react-router-dom';
 import {Login,Register, Home} from './pages/index';
 import {Header, Footer, Container} from './components/index';
 import { AuthProvider } from './firebase-auth';
 import { PrivateRoute } from './private-route';
+
 
 
 export const Routes = () => {

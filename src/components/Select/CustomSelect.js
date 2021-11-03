@@ -36,6 +36,7 @@ export const CustomSelect = ({options}) => {
             { ...provided, 
             color: "#66A571",
             fontWeight: "600",
+            fontSize: "16px"
         }
         ),
         indicatorSeparator: () => {},
@@ -48,7 +49,7 @@ export const CustomSelect = ({options}) => {
 
     return (
         <>
-            <Select defaultValue={{ label: "Selecione uma categoria", value: 0 }} styles={customStyles} options={options} theme={(theme) => ({
+            <Select style={{cursor: "pointer"}} defaultValue={{ label: "Selecione uma categoria", value: 0 }} styles={customStyles} options={options} theme={(theme) => ({
                 ...theme,
                 borderRadius: 0,
                 colors: {

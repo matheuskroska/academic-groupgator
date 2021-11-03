@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const HomeContainer = styled.div`
+    margin-top: 200px;
     max-height:550px;
     width: 100%;
 `

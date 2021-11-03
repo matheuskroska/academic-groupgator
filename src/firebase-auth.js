@@ -9,13 +9,19 @@ export const AuthProvider = ({children}) => {
 
     useEffect(() => {
         firebase.auth().onAuthStateChanged((user) => {
-        setCurrentUser(user)
+        var docRef = firebase.firestore().collection("usuario").doc(user.uid);
+        docRef.get().then((doc) => {
+            if (doc.exists)
+                setCurrentUser(doc.data());
+        }).catch((error) => {
+            console.log("Error getting document:", error);
+        });
         setPending(false)
         });
     }, []);
 
     if(pending){
-        return <>Loading...</>
+        return <>Carregando...</>
     }
 
     return (

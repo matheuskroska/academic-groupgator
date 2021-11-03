@@ -1,7 +1,8 @@
 import React, {useContext, useState, useEffect, } from 'react'
 import {NavContainer,NavWrapper,NavLeft,NavRight,NavCenter, NavProfile, NavSidebar} from './Header.elements'
+import {HeaderLogado} from "../index";
 import firebase from 'firebase';
-import { NavLink, useHistory  } from "react-router-dom";
+import { NavLink, useHistory, useLocation  } from "react-router-dom";
 import { AuthContext } from "../../firebase-auth";
 import { MdVpnKey, MdOutlineLogin, MdPowerSettingsNew,MdAccountCircle, MdSettings, MdExpandMore, MdOutlineAdd } from "react-icons/md";
 import logo from '../../assets/Images/logo-groupgator.png';
@@ -11,67 +12,35 @@ import { CardButton } from '../Card/Card.elements';
 
 export const Header = () => {
 
-    const [isOpen, setOpen] = useState(false);
-    const toggleSidebar = () => setOpen(!isOpen);
     const { currentUser } = useContext(AuthContext);
     const [name, setName] = useState('');
-
     const history = useHistory();
 
-    const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' }
-    ]
-
-    const signOut = () => {
-        firebase.auth().signOut();   
+    const usePathname = () => {
+        const location = useLocation();
+        return location.pathname;
     }
 
     useEffect(()=>{
-        if (currentUser) {
-            var docRef = firebase.firestore().collection("usuario").doc(currentUser.uid);
-
-            docRef.get().then((doc) => {
-                if (doc.exists) {
-                    setName(doc.data().nome);
-                } else {
-                    console.log("No such document!");
-                }
-            }).catch((error) => {
-                console.log("Error getting document:", error);
-            });
+        if(currentUser) {
+            setName(currentUser.nome);
         } else {
             history.push('/');
         }
     },[currentUser])
 
     return (
-        <>
+        <>{usePathname() != "/" ? 
             <NavContainer >
                 <NavWrapper>                 
                     {!currentUser ? (
                     <>
                         <NavLeft>
-                            <img src={logo}></img>
-                            <p>GroupGator</p>
+                             <NavLink exact activeClassName="active" to="/">
+                                    <img src={logo}></img>
+                                    <p>GroupGator</p>
+                            </NavLink>
                         </NavLeft>
-                        {/* <NavCenter>
-                            <ul>
-                                <li>
-                                    <a href="#">Home</a>
-                                </li>
-                                <li>
-                                    <a href="#">About</a>
-                                </li>
-                                <li>
-                                    <a href="#">Contact</a>
-                                </li>
-                                <li>
-                                    <a href="#">Member</a>
-                                </li>   
-                            </ul>
-                        </NavCenter> */}
                         <NavRight>
                             <NavLink exact activeClassName="active" to="/cadastro">
                                      <MdVpnKey/><div>Sign-in</div>
@@ -83,32 +52,12 @@ export const Header = () => {
                     </>
                     ):
                     <>     
-                        <NavSidebar show={isOpen}>
-                        </NavSidebar>
-                        <NavLeft onClick={toggleSidebar}>
-                            <img src={logo}></img>
-                            <p>GroupGator</p>
-                        </NavLeft> 
-                        <NavCenter>
-                            <CustomSelect options={options}/>
-                            <NavLink exact activeClassName="active" to="/criargrupo">
-                                    <CardButton header>Criar um grupo<MdOutlineAdd/></CardButton>      
-                            </NavLink>
-                        </NavCenter>
-                        <NavRight paddingSVG="5px!important" paddingAnchor="0">
-                            <NavProfile>
-                                <a href="#"><MdAccountCircle/></a>
-                            </NavProfile>
-                                <p>{name}
-                                    <MdExpandMore/>
-                                </p>
-                                <a ><MdSettings/></a>
-                                <a onClick={() => signOut()}><MdPowerSettingsNew/></a>
-                        </NavRight>
+                        <HeaderLogado logo={logo} name={name}/>
                     </>                             
                     }              
                 </NavWrapper>
             </NavContainer>
+            : ""}
         </>     
     )
 }

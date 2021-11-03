@@ -20,6 +20,15 @@ export const NavWrapper = styled.div`
 `
 
 export const NavLeft = styled(NavBase)`
+    cursor: pointer;
+
+    a {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     p {
         padding: 5px;
         color: #66A571;
