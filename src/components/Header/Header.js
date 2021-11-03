@@ -1,11 +1,13 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext, useState, useEffect, } from 'react'
 import {NavContainer,NavWrapper,NavLeft,NavRight,NavCenter, NavProfile, NavSidebar} from './Header.elements'
 import firebase from 'firebase';
-import { Redirect } from "react-router";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory  } from "react-router-dom";
 import { AuthContext } from "../../firebase-auth";
-import { MdVpnKey, MdOutlineLogin, MdPowerSettingsNew,MdAccountCircle, MdSettings, MdExpandMore } from "react-icons/md";
+import { MdVpnKey, MdOutlineLogin, MdPowerSettingsNew,MdAccountCircle, MdSettings, MdExpandMore, MdOutlineAdd } from "react-icons/md";
 import logo from '../../assets/Images/logo-groupgator.png';
+import {CustomSelect} from "../index";
+import { CardButton } from '../Card/Card.elements';
+
 
 export const Header = () => {
 
@@ -14,25 +16,35 @@ export const Header = () => {
     const { currentUser } = useContext(AuthContext);
     const [name, setName] = useState('');
 
+    const history = useHistory();
+
+    const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' }
+    ]
+
     const signOut = () => {
-        firebase.auth().signOut();
-        return <Redirect to="/feed" />;
+        firebase.auth().signOut();   
     }
 
-    if (currentUser) {
-        console.log(currentUser.uid)
-        var docRef = firebase.firestore().collection("usuario").doc(currentUser.uid);
+    useEffect(()=>{
+        if (currentUser) {
+            var docRef = firebase.firestore().collection("usuario").doc(currentUser.uid);
 
-        docRef.get().then((doc) => {
-            if (doc.exists) {
-                setName(doc.data().nome);
-            } else {
-                console.log("No such document!");
-            }
-        }).catch((error) => {
-            console.log("Error getting document:", error);
-        });
-    }
+            docRef.get().then((doc) => {
+                if (doc.exists) {
+                    setName(doc.data().nome);
+                } else {
+                    console.log("No such document!");
+                }
+            }).catch((error) => {
+                console.log("Error getting document:", error);
+            });
+        } else {
+            history.push('/');
+        }
+    },[currentUser])
 
     return (
         <>
@@ -44,7 +56,7 @@ export const Header = () => {
                             <img src={logo}></img>
                             <p>GroupGator</p>
                         </NavLeft>
-                        <NavCenter>
+                        {/* <NavCenter>
                             <ul>
                                 <li>
                                     <a href="#">Home</a>
@@ -59,7 +71,7 @@ export const Header = () => {
                                     <a href="#">Member</a>
                                 </li>   
                             </ul>
-                        </NavCenter>
+                        </NavCenter> */}
                         <NavRight>
                             <NavLink exact activeClassName="active" to="/cadastro">
                                      <MdVpnKey/><div>Sign-in</div>
@@ -78,14 +90,10 @@ export const Header = () => {
                             <p>GroupGator</p>
                         </NavLeft> 
                         <NavCenter>
-                            <select name="cars" id="cars">
-                                <option value="none" selected disabled hidden>Select uma categoria</option>
-                                <option value="futebol">Futebol</option>
-                                <option value="volley">Volley</option>
-                                <option value="basquete">Basquete</option>
-                                <option value="handball">Handball</option>
-                            </select>
-                            <a href="#">Crie um grupo</a>
+                            <CustomSelect options={options}/>
+                            <NavLink exact activeClassName="active" to="/criargrupo">
+                                    <CardButton header>Criar um grupo<MdOutlineAdd/></CardButton>      
+                            </NavLink>
                         </NavCenter>
                         <NavRight paddingSVG="5px!important" paddingAnchor="0">
                             <NavProfile>
@@ -94,8 +102,8 @@ export const Header = () => {
                                 <p>{name}
                                     <MdExpandMore/>
                                 </p>
-                                <a href="#"><MdSettings/></a>
-                                <a href="#" onClick={() => signOut()}><MdPowerSettingsNew/></a>
+                                <a ><MdSettings/></a>
+                                <a onClick={() => signOut()}><MdPowerSettingsNew/></a>
                         </NavRight>
                     </>                             
                     }              

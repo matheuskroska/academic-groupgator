@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 export const CardContainer = styled.div`
     width: 100%;
@@ -159,13 +159,44 @@ export const CardButton = styled.div`
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     cursor: pointer;
 
-    :active {
+    ${props =>
+    props.home &&
+    css`
+      min-width: 154px;
+      height: 35px;
+      font-size: 18px;
+      margin: initial;
+    `};
+
+    ${props =>
+    props.header &&
+    css`
+      min-width: initial;
+      height:35px;
+      font-size: 18px;
+      text-decoration: none;
+      padding: 0 5px 0 10px;
+    `};
+
+    a {
+        color: #fff;
+        text-decoration: none;
+        width: 100%;
+        text-align: center;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+
+    a:active {
     box-shadow: none;
     color: green;
     transition: 0.2s all;
     }
     
-    :hover {
+    a:hover {
         color: green;
     }
 

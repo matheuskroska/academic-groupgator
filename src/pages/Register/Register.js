@@ -128,7 +128,7 @@ export const Register = () => {
                 <CardItem>
                     <CardInput value={passwordRepeat} type="password" onChange={e => {setPasswordRepeat(e.target.value)}} placeholder="Repita sua senha" inputWidth="100%"></CardInput>
                 </CardItem>
-                <CardButton onClick={ () => cadastrarUsuario()}>Cadastrar<MdOutlineAddCircleOutline/></CardButton>
+                <CardButton onClick={ () => cadastrarUsuario()}>Cadastrar<MdOutlineAdd/></CardButton>
             </Card>
         </>     
     )

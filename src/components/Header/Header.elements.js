@@ -37,6 +37,7 @@ export const NavRight = styled(NavBase)`
     font-size: 18px;
     color: #66A571;
     font-weight: bold;
+    cursor: pointer;
     }
 
     a:hover {
@@ -73,6 +74,18 @@ export const NavCenter = styled(NavBase)`
     li, a {
         padding: 10px;
     }
+
+    a {
+        text-decoration: none;
+    }
+
+    a div {
+        margin: initial
+    }
+
+    a:hover div{
+        background-color:green;
+    }
     
 `
 
@@ -106,4 +119,12 @@ export const NavSidebar = styled.div`
     background-color: #fff;
     background: linear-gradient(
 180deg, #66A571 0%, rgba(102, 165, 113, 0) 100%);
+`
+
+export const NavSelect = styled.select`
+    outline: 0;
+    border: 1px solid #66A571;
+    border-radius: 25px;
+    height: 35px;
+    padding: 0 20px;
 `
