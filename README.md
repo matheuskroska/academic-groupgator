@@ -29,6 +29,7 @@ As seguintes bibliotecas foram usadas na construção do projeto:
 - [React Hooks](https://pt-br.reactjs.org/docs/hooks-intro.html)
 - [Firebase Firestore](https://console.firebase.google.com/)
 - [Styled Components](https://styled-components.com/)
+- [React Select](https://react-select.com/home)
 
 
 ## Features
