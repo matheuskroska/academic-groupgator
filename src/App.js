@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import firebase from './firebase-config';
-import { GlobalStyle, Header, Container, Footer} from './components/index';
-import {Login, Register} from './pages/index';
+import { GlobalStyle} from './components/index';
 import {Routes} from "./routes";
 
 

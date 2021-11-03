@@ -1,13 +1,11 @@
 import React, {useContext, useState, useEffect, } from 'react'
-import {NavContainer,NavWrapper,NavLeft,NavRight,NavCenter, NavProfile, NavSidebar} from './Header.elements'
+import {NavContainer,NavWrapper,NavLeft,NavRight} from './Header.elements'
 import {HeaderLogado} from "../index";
-import firebase from 'firebase';
 import { NavLink, useHistory, useLocation  } from "react-router-dom";
 import { AuthContext } from "../../firebase-auth";
-import { MdVpnKey, MdOutlineLogin, MdPowerSettingsNew,MdAccountCircle, MdSettings, MdExpandMore, MdOutlineAdd } from "react-icons/md";
+import { MdVpnKey, MdOutlineLogin} from "react-icons/md";
 import logo from '../../assets/Images/logo-groupgator.png';
-import {CustomSelect} from "../index";
-import { CardButton } from '../Card/Card.elements';
+import firebase from 'firebase';
 
 
 export const Header = () => {
@@ -21,9 +19,24 @@ export const Header = () => {
         return location.pathname;
     }
 
+    // useEffect(()=>{
+    //     if(currentUser) {
+    //         setName(currentUser.nome);
+    //     } else {
+    //         history.push('/');
+    //     }
+    // },[currentUser])
+
     useEffect(()=>{
         if(currentUser) {
-            setName(currentUser.nome);
+            var docRef = firebase.firestore().collection("usuario").doc(currentUser.uid);
+            docRef.get().then((doc) => {
+                if (doc.exists){
+                    setName(doc.data().nome); 
+                }    
+            }).catch((error) => {
+                console.log("Error getting document:", error);
+            });
         } else {
             history.push('/');
         }

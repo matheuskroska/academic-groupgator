@@ -190,13 +190,13 @@ export const CardButton = styled.div`
     }
     
 
-    a:active {
+    &:active {
     box-shadow: none;
     color: green;
     transition: 0.2s all;
     }
     
-    a:hover {
+    &:hover {
         color: green;
     }
 
