@@ -8,6 +8,7 @@ import SignIn from './pages/SignIn';
 import About from './pages/About';
 import Faq from './pages/FAQ';
 import PageUser from './pages/PageUser';
+import Edit from './pages/Edit'
 
 
 const Routes = () =>{
@@ -22,6 +23,7 @@ const Routes = () =>{
             <Route exact={true} path = "/about" component ={About} />
             <Route exact={true} path = "/faq" component ={Faq} />
             <Route exact={true} path = "/pageUser" component ={PageUser}/>
+            <Route exact={true} path = "/edit" component ={Edit}/>
             
         
             <Route exact={true} component ={NotFound} />
