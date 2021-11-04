@@ -1,11 +1,17 @@
 import {createGlobalStyle} from "styled-components";
 import styled from "styled-components";
+import "../assets/fonts/stylesheet.css";
 
 export const Container = styled.div`
     max-width: 1280px;
     margin: 0 auto;
     height: 70vh;
     padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
 `
 
 export const GlobalStyle = createGlobalStyle`
@@ -36,7 +42,10 @@ export const GlobalStyle = createGlobalStyle`
     footer, header, hgroup, menu, nav, section {
         display: block;
     }
+
+    
     body {
+        font-family: 'Roboto Condensed', sans-serif;
         line-height: 1;
         width: 100%;
         margin: 0 auto;
@@ -45,6 +54,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family : 'Roboto Condensed', sans-serif;
         background: linear-gradient( 
 180deg,#A1D3A6 35.94%,rgba(161,211,166,0) 100%);
+
     }
     ol, ul {
         list-style: none;

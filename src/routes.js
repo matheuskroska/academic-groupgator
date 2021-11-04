@@ -1,36 +1,30 @@
-import {BrowserRouter, Route, Switch,  } from "react-router-dom"
-import Home from './pages/Home';
-import Member from './pages/Member';
-import Contact from './pages/Contact';
-import NotFound from './pages/NotFound';
-import Login from './pages/Login';
-import SignIn from './pages/SignIn';
-import About from './pages/About';
-import Faq from './pages/FAQ';
-import PageUser from './pages/PageUser';
+import {Route, BrowserRouter as Router, Switch} from 'react-router-dom';
+import {Login,Register, Home, Feed} from './pages/index';
+import {Header, Footer, Container} from './components/index';
+import { AuthProvider } from './firebase-auth';
+import { PrivateRoute } from './private-route';
 
 
-const Routes = () =>{
+
+export const Routes = () => {
+
     return (
-        <BrowserRouter>
-        <Switch>
-            <Route exact={true} path = "/" component ={Home} />
-            <Route exact={true} path = "/member" component ={Member} />
-            <Route exact={true} path = "/contact" component ={Contact} />
-            <Route exact={true} path = "/login" component ={Login} />
-            <Route exact={true} path = "/signIn" component ={SignIn} />
-            <Route exact={true} path = "/about" component ={About} />
-            <Route exact={true} path = "/faq" component ={Faq} />
-            <Route exact={true} path = "/pageUser" component ={PageUser}/>
-            
-        
-            <Route exact={true} component ={NotFound} />
-        </Switch>
-        </BrowserRouter>
-
-
+        <AuthProvider>
+            <Router>
+                <Header/>
+                <Container>
+                    <Switch>
+                        <Route exact path="/" component={Home}/>
+                        <Route exact path="/login" component={Login}/>
+                        <Route exact path="/cadastro" component={Register}/>
+                        <PrivateRoute exact path="/feed" component={Feed}/>
+                        <PrivateRoute exact path="/new" component={() => <h1>new</h1>}/>
+                        <Route component={() => <h1>NOT FOUND</h1>} />
+                    </Switch> 
+                </Container>
+                <Footer/>
+            </Router>
+        </AuthProvider>
     )
-
 }
 
-export default Routes;

@@ -1,153 +1,76 @@
-import React, { useState, useEffect } from 'react'
-import {NavContainer,NavWrapper,NavLeft,NavRight,NavCenter, NavProfile, NavSidebar} from './Header.elements'
-import logo  from '../../img/logo.png';
-import {BrowserRouter, Route, Switch, Link} from "react-router-dom";
-import '../../routes';
-import firebase from '../../firebase-config';
-import Button from '@material-ui/core/Button';
-import PowerSettingsNewOutlinedIcon from '@material-ui/icons/PowerSettingsNewOutlined';
-import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
-import VpnKeyOutlinedIcon from '@material-ui/icons/VpnKeyOutlined';
-import AccountCircleOutlinedIcon from '@material-ui/icons//AccountCircleOutlined';
-
-
+import React, { useContext, useState, useEffect, } from 'react'
+import { NavContainer, NavWrapper, NavLeft, NavRight } from './Header.elements'
+import { HeaderLogado } from "../index";
+import { NavLink, useHistory, useLocation } from "react-router-dom";
+import { AuthContext } from "../../firebase-auth";
+import { MdVpnKey, MdOutlineLogin } from "react-icons/md";
+import logo from '../../assets/Images/logo-groupgator.png';
+import firebase from 'firebase';
 
 
 export const Header = () => {
 
-    const [isOpen, setOpen] = useState(false);
-    const [logado, setLogado] = useState(false);
+    const { currentUser } = useContext(AuthContext);
+    const [name, setName] = useState('');
+    const history = useHistory();
 
-    const [name, setName] = useState();
-    const [mensagem, setMensagem] = useState(""); 
-
-    const toggleSidebar = () => setOpen(!isOpen);
-    
-
-    const deslogar = async (e) => {
-        firebase.auth().signOut().then(() => {
-            console.log("saiu")
-          }).catch((error) => {
-          });
+    const usePathname = () => {
+        const location = useLocation();
+        return location.pathname;
     }
 
+    // useEffect(()=>{
+    //     if(currentUser) {
+    //         setName(currentUser.nome);
+    //     } else {
+    //         history.push('/');
+    //     }
+    // },[currentUser])
 
-
-    firebase.auth().onAuthStateChanged((user)=>{
-        let user_id;
-        if(user){
-            setLogado(true);
-            setMensagem("logado");
-            let uid = user.uid;
-            setName(user.email)
-            let lista = []
-            //where("userId", "==", uid)
-            firebase.firestore()
-            .collection('usuario')
-            .onSnapshot((snapshot) => {
-            const newUser = snapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data()
-            }))
-            })
+    useEffect(() => {
+        if (currentUser) {
+            var docRef = firebase.firestore().collection("usuario").doc(currentUser.uid);
+            docRef.get().then((doc) => {
+                if (doc.exists) {
+                    setName(doc.data().nome);
+                }
+            }).catch((error) => {
+                console.log("Error getting document:", error);
+            });
+        } else {
+            history.push('/');
         }
-    });
-
-
+    }, [currentUser])
 
     return (
-<>
-    <BrowserRouter>
-        <Switch>
+        <>{usePathname() != "/" ?
             <NavContainer >
-                <NavWrapper logado={logado}>                 
-                    {!logado ? (
-                    <>
-                        <NavLeft>
-                            <img src={logo} width="60" />
-                            <p>GroupGator</p>
-                            <h6>{mensagem}</h6>
-                        </NavLeft>
-                        <NavCenter>
-                            <ul>
-                                <li>
-                                    <Link to= '/' class="bHome">Home</Link>&nbsp;         
-                                </li>
-                                <li>
-                                    <Link to= '/about' class="bAbout">About</Link>&nbsp;  
-                                </li>
-                                <li>
-                                    <Link to= '/contact' class="bContact">Contact</Link>&nbsp;  
-                                </li>
-                                <li>
-                                    <Link to= '/member' class="bMember">Member</Link>&nbsp;  
-                                </li>   
-                            </ul>
-                        </NavCenter>
-                        <NavRight>
-                            <Button 
-                                onClick={() => console.log("oi")}
-                                style={{
-                                    color: '#66A571',
-                                    
-                                }}
-                                startIcon={<VpnKeyOutlinedIcon/>}
-                                
-                                component={Link}
-                                to = "/SignIn"
-                            >
-                                
-                                Sing In
-                            </Button>&nbsp;  &nbsp; 
-                            <Button 
-                                onClick={() => console.log("oi")}
-                                style={{
-                                    color: '#66A571',
-                                    
-                                }}
-                                startIcon={<AccountCircleOutlinedIcon/>}
-                                
-                                component={Link}
-                                to = "/Login"
-                            >
-                                
-                                Login
-                            </Button>&nbsp;                              
-                        </NavRight>
-                    </>
-                    ):
-                    <>  
-                        
-                        
-                        <NavSidebar show={isOpen}>
-                        </NavSidebar>
-                        <NavLeft onClick={toggleSidebar}>
-                            <img src={logo} width="60" />
-                            <p>GroupGator</p>
-                        </NavLeft> 
-                        <NavCenter>
-                            <select name="cars" id="cars">
-                                <option value="none" selected disabled hidden>Select uma categoria</option>
-                                <option value="futebol">Futebol</option>
-                                <option value="volley">Volley</option>
-                                <option value="basquete">Basquete</option>
-                                <option value="handball">Handball</option>
-                            </select>
-                            <a href="#">Crie um grupo</a>
-                        </NavCenter>
-                        <NavRight>
-                            <NavProfile>
-                                <p class="classNameUser">{name}</p>&nbsp;
-                                </NavProfile>&nbsp;&nbsp;
-                                <Link to= '/#' class="bConf" > <SettingsOutlinedIcon/></Link>&nbsp;
-                                <Link to= '/' onClick={() => deslogar()}> <PowerSettingsNewOutlinedIcon/></Link>&nbsp;
-                        </NavRight>
-                    </>                             
-                    }              
+                <NavWrapper>
+                    {!currentUser ? (
+                        <>
+                            <NavLeft>
+                                <NavLink exact activeClassName="active" to="/">
+                                    <img src={logo}></img>
+                                    <p>GroupGator</p>
+                                </NavLink>
+                            </NavLeft>
+                            <NavRight>
+                                <NavLink exact activeClassName="active" to="/cadastro">
+                                    <MdVpnKey /><div>Sign-in</div>
+                                </NavLink>
+                                <NavLink exact activeClassName="active" to="/login">
+                                    <MdOutlineLogin /><div>Login</div>
+                                </NavLink>
+                            </NavRight>
+                        </>
+                    ) :
+                        <>
+                            <HeaderLogado logo={logo} name={name} />
+                        </>
+                    }
                 </NavWrapper>
             </NavContainer>
-        </Switch>
-    </BrowserRouter>
-        </>     
+            : ""}
+        </>
     )
 }

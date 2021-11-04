@@ -1,6 +1,6 @@
 import React from 'react'
 import {FooterContainer,FooterWrapper,FooterCenter,FooterRight} from './Footer.elements'
-import {BrowserRouter, Route, Switch, Link} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export const Footer = () => {
     return (
@@ -8,22 +8,23 @@ export const Footer = () => {
             <FooterContainer>
                 <FooterWrapper>
                     <FooterCenter>
-                        <BrowserRouter>
-                            <Switch>
-                            <ul>
-                                <li>
-                                    <Link to= '/about' class="bAbout">Sobre</Link>&nbsp;  
-                                </li>
-                                <li>
-                                <Link to= '/faq' class="bFaq">FAQ</Link>&nbsp;  
-                                </li>
-                                <li>
-                                    <Link to= '/contact' class="bContact">Contato</Link>&nbsp;  
-                                </li> 
-                            </ul>
-                            </Switch>                        
-                        </BrowserRouter>
-                            
+                        <ul>
+                            <li>
+                                 <NavLink exact activeClassName="active" to="/cadastro">
+                                     Sobre
+                                 </NavLink>
+                            </li>
+                            <li>
+                                <NavLink exact activeClassName="active" to="/cadastro">
+                                     FAQ
+                                 </NavLink>
+                            </li>
+                            <li>
+                                <NavLink exact activeClassName="active" to="/cadastro">
+                                     Contato
+                                 </NavLink>
+                            </li> 
+                        </ul>
                     </FooterCenter>
                     <FooterRight>
                         <p>GroupGator ® Todos os direitos reservados</p>
