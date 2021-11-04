@@ -215,4 +215,8 @@ export const CardError = styled.p`
     position: absolute;
     bottom: 0;
 `
-  
+
+
+export const CardFeedItem = styled.div`
+    
+`
