@@ -26,7 +26,7 @@ function App() {
       return usuario
     }
 
-    const inserirUsuario = async (e) => {
+  /*  const inserirUsuario = async (e) => {
       e.preventDefault();
       if(typeof estado != "undefined" || estado != null){
         await firebase.firestore().collection('usuarios').add({
@@ -41,7 +41,7 @@ function App() {
         alert ("Invalid data");
       }
     }
-
+*/
     const listarUsuario = async (e) => {
       await firebase.firestore().collection('usuarios').get()
       .then((snapshot) => {

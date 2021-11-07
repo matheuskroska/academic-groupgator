@@ -64,39 +64,43 @@ export const Register = () => {
     
 
     const cadastrarUsuario = () => {
-        setLoadingStatus("flex");
-        const timer = setTimeout(() => {
-                firebase.auth().createUserWithEmailAndPassword(email,password)
-                .then((data) => {
-                console.log(data.user.uid);
-                firebase.firestore().collection('usuario').doc(data.user.uid).set({
-                nome: name,
-                sobrenome: surname,
-                email: email,
-                telefone : ddd + " " + phone,
-                endereco: address,
-                password    
-                }).then( () => {
-                    setName("");setSurname("");setEmail("");
-                    setDDD("");setPhone("");setAddress(""); 
-                    setPassword("");setPasswordRepeat("");
+        if (password === passwordRepeat){
+            setLoadingStatus("flex");
+            const timer = setTimeout(() => {
+                    firebase.auth().createUserWithEmailAndPassword(email,password)
+                    .then((data) => {
+                    console.log(data.user.uid);
+                    firebase.firestore().collection('usuario').doc(data.user.uid).set({
+                    nome: name,
+                    sobrenome: surname,
+                    email: email,
+                    telefone : ddd + " " + phone,
+                    endereco: address,
+                        
+                    }).then( () => {
+                        setName("");setSurname("");setEmail("");
+                        setDDD("");setPhone("");setAddress(""); 
+                        
+                    })
                 })
-            })
-            .catch((error) => {
-                setLoadingStatus("none!important");
-                let errorCode = error.code;
-                switch (errorCode) {
-                    case "auth/email-already-in-use":
-                        setErrorMessage("O email já está em uso!");
-                        break;
-                    case "auth/weak-password":
-                        setErrorMessage("A senha é fraca!");
-                    default:
-                        setErrorMessage("Preencha todos os campos!");
-                        break;
-                }
-            });
-        }, 1000)    
+                .catch((error) => {
+                    setLoadingStatus("none!important");
+                    let errorCode = error.code;
+                    switch (errorCode) {
+                        case "auth/email-already-in-use":
+                            setErrorMessage("O email já está em uso!");
+                            break;
+                        case "auth/weak-password":
+                            setErrorMessage("A senha é fraca!");
+                        default:
+                            setErrorMessage("Preencha todos os campos!");
+                            break;
+                    }
+                });
+            }, 1000)    
+        }else{
+            setErrorMessage("As senhas informadas devem ser iguais")
+        }
     }
 
    

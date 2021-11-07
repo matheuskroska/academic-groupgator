@@ -45,7 +45,9 @@ export const HeaderLogado = ({name, logo}) => {
                     <p>{name}
                         <MdExpandMore/>
                     </p>
+                    <NavLink exact activeClassName="active" to="/edit">
                     <a ><MdSettings/></a>
+                    </NavLink>
                     <a onClick={() => signOut()}><MdPowerSettingsNew/></a>
             </NavRight>
         </>                                 
