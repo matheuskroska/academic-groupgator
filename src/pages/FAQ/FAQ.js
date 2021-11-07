@@ -1,6 +1,6 @@
 import React from "react";
 
-function Faq(){
+export function FAQ(){
     return(
         <div className="faq" >
             perguntinhas??? <br></br>
@@ -10,4 +10,3 @@ function Faq(){
 
 }
 
-export default Faq;

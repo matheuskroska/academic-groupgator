@@ -1,7 +1,7 @@
 import React from "react";
 import { MdPhone, MdEmail, MdOutlineTravelExplore } from "react-icons/md";
 
-function Contact() {
+export function Contact() {
     return (
         <div className="contact" >
 
@@ -92,4 +92,3 @@ function Contact() {
 
 }
 
-export default Contact;

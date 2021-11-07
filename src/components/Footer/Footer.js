@@ -10,17 +10,17 @@ export const Footer = () => {
                     <FooterCenter>
                         <ul>
                             <li>
-                                 <NavLink exact activeClassName="active" to="/cadastro">
+                                 <NavLink exact activeClassName="active" to="/sobre">
                                      Sobre
                                  </NavLink>
                             </li>
                             <li>
-                                <NavLink exact activeClassName="active" to="/cadastro">
+                                <NavLink exact activeClassName="active" to="/faq">
                                      FAQ
                                  </NavLink>
                             </li>
                             <li>
-                                <NavLink exact activeClassName="active" to="/cadastro">
+                                <NavLink exact activeClassName="active" to="/contato">
                                      Contato
                                  </NavLink>
                             </li> 
