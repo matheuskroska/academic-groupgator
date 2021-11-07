@@ -1,29 +1,30 @@
 import { useState, useEffect } from "react";
 import firebase from './firebase-config';
-import { GlobalStyle} from './components/index';
-import {Routes} from "./routes";
+import { GlobalStyle } from './components/index';
+import { Routes } from "./routes";
 
 
 function App() {
+    document.title = "GroupGator"
 
 
     function useUser() {
-      const [usuario, setUser] = useState([]);
-      
-      useEffect(() => {
-        firebase.firestore()
-          .collection('usuarios')
-          .onSnapshot((snapshot) => {
-            const newUser = snapshot.docs.map((doc) => ({
-              id: doc.id,
-              ...doc.data()
-            }))
+        const [usuario, setUser] = useState([]);
 
-            setUser(newUser)
-          })
-      }, [])
+        useEffect(() => {
+            firebase.firestore()
+                .collection('usuarios')
+                .onSnapshot((snapshot) => {
+                    const newUser = snapshot.docs.map((doc) => ({
+                        id: doc.id,
+                        ...doc.data()
+                    }))
 
-      return usuario
+                    setUser(newUser)
+                })
+        }, [])
+
+        return usuario
     }
 
   /*  const inserirUsuario = async (e) => {
@@ -43,20 +44,20 @@ function App() {
     }
 */
     const listarUsuario = async (e) => {
-      await firebase.firestore().collection('usuarios').get()
-      .then((snapshot) => {
-        let lista = [];
+        await firebase.firestore().collection('usuarios').get()
+            .then((snapshot) => {
+                let lista = [];
 
-        snapshot.forEach((item)=>{
-          lista.push({
-            id: item.id,
-            nome: item.data().nome,
-            insertDate: item.data().insertDate
-          });
-        });
+                snapshot.forEach((item) => {
+                    lista.push({
+                        id: item.id,
+                        nome: item.data().nome,
+                        insertDate: item.data().insertDate
+                    });
+                });
 
-        console.log(lista)
-      })
+                console.log(lista)
+            })
     }
 
     const times = useUser()
@@ -68,12 +69,12 @@ function App() {
     //   }
 
     // })
-   
-  return (
-    <>
-      <GlobalStyle/>
-      <Routes/>
-      {/* <Header/>
+
+    return (
+        <>
+            <GlobalStyle />
+            <Routes />
+            {/* <Header/>
       <Container>
           <Register/>
           <Login/>
@@ -95,8 +96,8 @@ function App() {
             }}).map( times => <div key={times.id}><div>{times.nome}</div><div>{times.insertDate.toString()}</div></div>) : <>Não existe registro no banco</>}
       </Container>
       <Footer/>  */}
-    </>       
-  );
+        </>
+    );
 }
 
 
