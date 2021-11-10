@@ -30,6 +30,9 @@ As seguintes bibliotecas foram usadas na construção do projeto:
 - [Firebase Firestore](https://console.firebase.google.com/)
 - [Styled Components](https://styled-components.com/)
 - [React Select](https://react-select.com/home)
+- [React Slick](https://react-slick.neostack.com/)
+- [React Icons](https://react-icons.github.io/react-icons/)
+- [React DatePicker](https://reactdatepicker.com/)
 
 
 ## Features
