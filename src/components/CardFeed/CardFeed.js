@@ -1,7 +1,7 @@
 import React from 'react'
 import { CardFeedButton, CardFeedContainer, CardFeedContent, CardFeedItem } from './CardFeed.elements'
 
-export const CardFeed = ({titulo,descricao,titulobotao}) => {
+export const CardFeed = ({titulo,descricao,titulobotao,data, integrantes}) => {
     return (
         <>
             <CardFeedContainer>
@@ -10,8 +10,8 @@ export const CardFeed = ({titulo,descricao,titulobotao}) => {
                 </CardFeedItem>
                 <CardFeedItem>
                     <CardFeedContent>{descricao}</CardFeedContent>
-                    <CardFeedContent>{descricao}</CardFeedContent>
-                    <CardFeedContent>{descricao}</CardFeedContent>
+                    <CardFeedContent>{data}</CardFeedContent>
+                    <CardFeedContent>1 / {integrantes}</CardFeedContent>
                     <CardFeedButton>{titulobotao}</CardFeedButton>
                 </CardFeedItem>
             </CardFeedContainer>

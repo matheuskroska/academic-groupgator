@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {NavLeft,NavRight,NavCenter, NavProfile, NavSidebar} from "../Header/Header.elements"
 import firebase from 'firebase';
 import { NavLink} from "react-router-dom";
-import {MdPowerSettingsNew,MdAccountCircle, MdSettings, MdExpandMore, MdOutlineAdd } from "react-icons/md";
+import {MdPowerSettingsNew,MdAccountCircle, MdSettings, MdExpandMore, MdOutlineAdd, MdPets } from "react-icons/md";
 import {CustomSelect} from "../index";
 import { CardButton } from '../Card/Card.elements';
 
@@ -22,6 +22,8 @@ export const HeaderLogado = ({name, logo}) => {
         firebase.auth().signOut();   
     }
 
+    
+
     return (
         <>            
             <NavSidebar show={isOpen}>
@@ -33,7 +35,7 @@ export const HeaderLogado = ({name, logo}) => {
                 <p>GroupGator</p>
             </NavLeft> 
             <NavCenter>
-                <CustomSelect options={options}/>
+                <CustomSelect placeholder="Selecione o tipo de evento" options={options}/>
                 <NavLink exact activeClassName="active" to="/criargrupo">
                         <CardButton header>Criar um grupo<MdOutlineAdd/></CardButton>      
                 </NavLink>

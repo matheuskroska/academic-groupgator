@@ -1,7 +1,7 @@
-import React from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import Select from 'react-select'
 
-export const CustomSelect = ({options}) => {
+export const CustomSelect = ({options, width, onChange, placeholder}) => {
 
     const customStyles = {
         option: (provided, state) => ({
@@ -11,13 +11,13 @@ export const CustomSelect = ({options}) => {
             color: state.isSelected ? '#fff' : '#66A571',
             color: state.isFocused ? '#fff' : '#66A571',
             "&:hover": state.isHovered ? {color: "#fff"} : {color: "#fff", backgroundColor:"green"},
-            fontWeight: "bold"
+            fontWeight: "bold",
         }),
         menu: (provided, state) => ({
             ...provided,
             color: state.selectProps.menuColor,
             borderRadius: 25,
-            overflow: 'hidden'
+            overflow: 'hidden',
         }),
         control: (provided,state) => (
             { ...provided, 
@@ -30,26 +30,36 @@ export const CustomSelect = ({options}) => {
             minHeight: "35px",
             padding: "0 5px 0 10px",
             "&:hover": state.isHovered ? null : null,
-
         }),
-        singleValue: (provided) => (
+        singleValue: (provided,state) => (
             { ...provided, 
             color: "#66A571",
-            fontWeight: "600",
-            fontSize: "16px"
-        }
-        ),
+            fontWeight: "bold",
+            fontSize: "18px",
+        }),
         indicatorSeparator: () => {},
         dropdownIndicator: base => ({
             ...base,
             color: "#66A571",
             "&:hover": {color: "green"}
         }),
+        container: (provided, { selectProps: { width }}) => (
+           { ...provided,
+            width: width}
+        ),
+        placeholder: (provided) => (
+            {...provided,
+            color: "#66A571",
+            color: "rgb(102 165 113 / 55%)",
+            fontWeight: "bold",
+            fontSize: "18px",}
+        )          
+        
     } 
 
     return (
         <>
-            <Select style={{cursor: "pointer"}} defaultValue={{ label: "Selecione uma categoria", value: 0 }} styles={customStyles} options={options} theme={(theme) => ({
+            <Select onChange={onChange} style={{cursor: "pointer"}} placeholder={placeholder} styles={customStyles} options={options} width={width} theme={(theme) => ({
                 ...theme,
                 borderRadius: 0,
                 colors: {
@@ -58,6 +68,7 @@ export const CustomSelect = ({options}) => {
                     primary: '#66A571',
                     primary75: '#66A571',
                     primary50: '#66A571',
+                    
             },
             })} />
         </>

@@ -22,6 +22,7 @@ export const CardLoader = styled.div`
     flex-direction: column;
     backdrop-filter: blur(1px);
     opacity: 0.8;
+    z-index: 10;
 `
 
 export const CardSpinner = styled.div`
@@ -132,7 +133,7 @@ export const CardWrapper = styled.div`
 export const CardItem = styled.div`
     display: flex;
     margin-bottom: 13px;
-    gap: 8px;
+    gap: ${props => props.gap || "8px"};
     justify-content: ${props => props.justifyContent || "initial"};
 `
 
@@ -195,9 +196,12 @@ export const CardButton = styled.div`
     color: green;
     transition: 0.2s all;
     }
+
+
     
-    &:hover {
-        color: green;
+    &:hover, a:hover  {
+        background-color: green;
+        border-radius: 25px;
     }
 
     svg {
