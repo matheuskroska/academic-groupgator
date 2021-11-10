@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import myImage from '../../assets/Images/futebol_background.jpg'
+// import myImage from '../../assets/Images/futebol_background.jpg'
 
 export const CardFeedContainer = styled.div`
-    background-image: url(${myImage});
+    background-image: url(${props => props.imgUrl});
     border-radius: 25px;
     max-width: 243px;
     padding: 20px;

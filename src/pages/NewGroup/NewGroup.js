@@ -22,9 +22,9 @@ export const NewGroup = () => {
     const history = useHistory();
 
     const options = [
-        { value: 'Esporte', label: 'Esporte' },
-        { value: 'Manifestação', label: 'Manifestação' },
-        { value: 'Encontro', label: 'Encontro' }
+        { id: 0, value: 'Esporte', label: 'Esporte' },
+        { id: 1, value: 'Manifestação', label: 'Manifestação' },
+        { id: 2, value: 'Encontro', label: 'Encontro' }
     ]
 
     const options2 = [
@@ -46,6 +46,7 @@ export const NewGroup = () => {
     const { currentUser } = useContext(AuthContext);
     const [evento, setEvento] = useState('');
     const [esporte, setEsporte] = useState('');
+    const [tipo, setTipo] = useState('');
     const [limite, setLimite] = useState('');
     const [email, setEmail] = useState('');
     const [address, setAddress] = useState('');
@@ -62,6 +63,7 @@ export const NewGroup = () => {
         const timer = setTimeout(() => {
                 firebase.firestore().collection('grupos').doc().set({
                 id_criador: currentUser.uid,
+                tipo: tipo,
                 esporte: esporte,
                 nome: evento,
                 endereco: address,
@@ -89,6 +91,7 @@ export const NewGroup = () => {
 
     const onChangeSetEsporte = (value) => {
         setEsporte(value.value);
+        setTipo(value.id);
     }
 
     const onChangeSetLimitePessoas = (value) => {
