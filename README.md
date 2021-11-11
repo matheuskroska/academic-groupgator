@@ -4,7 +4,7 @@
   </a>
 </p>
 
-<p align="center">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown 🐊</p>
+<p align="center">GroupGator é uma rede social para conectar e encontrar pessoas que buscam praticar alguma atividade em grupo!. 🐊</p>
 
 <div align="center">
   <img alt "React Project" src="https://badges.aleen42.com/src/react.svg"/>
