@@ -59,7 +59,7 @@ function App() {
                 console.log(lista)
             })
     }
-*/
+
     const times = useUser()
 
     // firebase.auth().onAuthStateChanged((user) => {
