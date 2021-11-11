@@ -22,9 +22,12 @@ export const NewGroup = () => {
     const history = useHistory();
 
     const options = [
-        { id: 0, value: 'Esporte', label: 'Esporte' },
-        { id: 1, value: 'Manifestação', label: 'Manifestação' },
-        { id: 2, value: 'Encontro', label: 'Encontro' }
+        { id: 0, value: 'Evento Acadêmico', label: 'Acadêmico' },
+        { id: 1, value: 'Evento Corporativo', label: 'Corporativo' },
+        { id: 2, value: 'Evento Cultural', label: 'Cultural'},
+        { id: 3, value: 'Evento Esportivo', label: 'Esportivo'},
+        { id: 4, value: 'Evento Religioso', label: 'Religoso'},
+        { id: 5, value: 'Evento Social', label: 'Social'}
     ]
 
     const options2 = [

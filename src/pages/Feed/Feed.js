@@ -21,30 +21,10 @@ export const Feed = (props) => {
         slidesToScroll: 1,
         autoplay: true,
         randomize: true,
-        autoplaySpeed: 10000,
+        autoplaySpeed: 5000,
         pauseOnHover: true,
         infinite: false
-
-        // dots: true,
-        // speed: 500,
-        // rows: 2,
-        // slidesToShow: 4,
-        // slidesPerRow: 1,
-        // slidesToScroll: 1,
-        // autoplay: true,
-        // randomize: true,
-        // autoplaySpeed: 10000,
-        // pauseOnHover: true,
-
-        // rows: 2,
-        // dots: true,
-        // arrows: true,
-        // infinite: true,
-        // speed: 300,
-        // slidesToShow: 4,
-        // slidesToScroll: 4
     };
-
 
     const [estado, setEstado] = useState();
     const [pesquisa, setPesquisa] = useState('');
@@ -52,25 +32,21 @@ export const Feed = (props) => {
     const groupdata = useUser()
 
     function useUser() {
+    const [usuario, setUser] = useState([]);
+        useEffect(() => {
+          firebase.firestore()
+            .collection('grupos')
+            .onSnapshot((snapshot) => {
+              const newUser = snapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data()
+              }))
+    
+              setUser(newUser)
+            })
+        }, [])
 
-
-
-      const [usuario, setUser] = useState([]);
-      
-      useEffect(() => {
-        firebase.firestore()
-          .collection('grupos')
-          .onSnapshot((snapshot) => {
-            const newUser = snapshot.docs.map((doc) => ({
-              id: doc.id,
-              ...doc.data()
-            }))
-
-            setUser(newUser)
-          })
-      }, [])
-
-      return usuario
+        return usuario
     }
 
     const options2 = [
@@ -100,6 +76,7 @@ export const Feed = (props) => {
                               data={moment(groupdata.data.toDate()).format('Do MMMM YYYY, h:mm')}
                               integrantes={groupdata.limite}
                               imgID={groupdata.tipo}
+                              groupID={groupdata.id}
                               titulobotao={"participar"}>
                             </CardFeed>) : <>Não existe registro no banco</>}              
                     </Slider>
