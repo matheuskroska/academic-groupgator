@@ -58,10 +58,10 @@ export const CardFeed = ({titulo,descricao,titulobotao,data, integrantes, imgID,
         var docRefGroup = firebase.firestore().collection("grupos").doc(gID);
 
         docRefGroup.get().then((doc) => {
-        setInscrito(doc.data().inscritos)
+            setInscrito(doc.data().inscritos ?? "0")  
             }).catch((error) => {
             console.log("Error getting document:", error);
-        });     
+        });    
 
         docRef.get().then((doc) => {
             if (doc.data().grupos.includes(gID)){
@@ -85,6 +85,8 @@ export const CardFeed = ({titulo,descricao,titulobotao,data, integrantes, imgID,
         var docRef = firebase.firestore().collection("usuario").doc(currentUser.uid);
         var docRefGroup = firebase.firestore().collection("grupos").doc(gID);
         setDesabilita("none");
+
+         
 
         if(!botao) {
             if(inscrito == integrantes){}else{
