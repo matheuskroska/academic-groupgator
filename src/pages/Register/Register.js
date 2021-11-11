@@ -75,7 +75,7 @@ export const Register = () => {
                 email: email,
                 telefone : ddd + " " + phone,
                 endereco: address,
-                password    
+                grupos: []  
                 }).then( () => {
                     setName("");setSurname("");setEmail("");
                     setDDD("");setPhone("");setAddress(""); 

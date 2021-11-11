@@ -22,7 +22,7 @@ export const CardFeedItem = styled.div`
     background-color: rgb(255 255 255 / 70%); 
 
     ${props =>
-    props.title &&
+    props.$title &&
     css`
       display:flex;
       justify-content: center;

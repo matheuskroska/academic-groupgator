@@ -51,6 +51,7 @@ export const CardFeed = ({titulo,descricao,titulobotao,data, integrantes, imgID,
     const [groupStatus, setGroupStatus] = useState(false);
     const [bgColor, setBgColor] = useState('');
     const gID = groupID;
+    
 
     useEffect(()=>{
         var docRef = firebase.firestore().collection("usuario").doc(currentUser.uid);
@@ -80,7 +81,7 @@ export const CardFeed = ({titulo,descricao,titulobotao,data, integrantes, imgID,
         });  
     })
  
-    const handleClick = async () => {    
+    const handleClick = () => {    
         var docRef = firebase.firestore().collection("usuario").doc(currentUser.uid);
         var docRefGroup = firebase.firestore().collection("grupos").doc(gID);
         setDesabilita("none");
@@ -139,7 +140,7 @@ export const CardFeed = ({titulo,descricao,titulobotao,data, integrantes, imgID,
     return (
         <>
             <CardFeedContainer imgUrl={img}>
-                <CardFeedItem title margin={"0 0 10px 0"}>
+                <CardFeedItem $title margin={"0 0 10px 0"}>
                    <ChooseIcon iconID={imgID}/> {titulo}
                 </CardFeedItem>
                 <CardFeedItem>
