@@ -31,30 +31,15 @@ export const NavLeft = styled(NavBase)`
 
     p {
         padding: 5px;
-<<<<<<< HEAD
-        font-style: 'Roboto Condensed', sans-serif;
-        color: #66A571;
-        font-weight: bold;
-        font-size: 25px;
-
-=======
         color: #66A571;
         font-weight: bold;
         font-size:18px;
         margin-left: 10px;
->>>>>>> feed
     }
 `
 
 export const NavRight = styled(NavBase)`
     a {
-<<<<<<< HEAD
-        padding: 5px;
-        text-decoration: none;
-        font-style: 'Roboto Condensed', sans-serif;
-        color: #66A571;
-
-=======
     padding: ${props => props.paddingAnchor || "5px 10px"};
     display: flex;
     text-decoration: none;
@@ -86,7 +71,6 @@ export const NavRight = styled(NavBase)`
     div {
         display: flex;
         align-items: center;
->>>>>>> feed
     }
     
 `
