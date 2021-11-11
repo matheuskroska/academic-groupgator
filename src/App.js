@@ -27,21 +27,21 @@ function App() {
         return usuario
     }
 
-  /*  const inserirUsuario = async (e) => {
-      e.preventDefault();
-      if(typeof estado != "undefined" || estado != null){
-        await firebase.firestore().collection('usuarios').add({
-        nome: estado,
-        insertDate: new Date()
-        }).then( () => {
-          console.log("gravou corretamente");
-        }).catch( (erro) => {
-          console.log("erro " + erro);
-        });
-      }else {
-        alert ("Invalid data");
-      }
-    }
+    // const inserirUsuario = async (e) => {
+    //   e.preventDefault();
+    //   if(typeof estado != "undefined" || estado != null){
+    //     await firebase.firestore().collection('usuarios').add({
+    //     nome: estado,
+    //     insertDate: new Date()
+    //     }).then( () => {
+    //       console.log("gravou corretamente");
+    //     }).catch( (erro) => {
+    //       console.log("erro " + erro);
+    //     });
+    //   }else {
+    //     alert ("Invalid data");
+    //   }
+    // }
 
     const listarUsuario = async (e) => {
         await firebase.firestore().collection('usuarios').get()

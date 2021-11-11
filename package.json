@@ -9,8 +9,14 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+<<<<<<< HEAD
     "firebase": "^8.3.1",
+=======
+    "firebase": "8.3.1",
+    "moment": "^2.29.1",
+>>>>>>> feed
     "react": "^17.0.2",
+    "react-datepicker": "^4.3.0",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
     "react-router-dom": "^5.3.0",

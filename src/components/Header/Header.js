@@ -19,14 +19,6 @@ export const Header = () => {
         return location.pathname;
     }
 
-    // useEffect(()=>{
-    //     if(currentUser) {
-    //         setName(currentUser.nome);
-    //     } else {
-    //         history.push('/');
-    //     }
-    // },[currentUser])
-
     useEffect(() => {
         if (currentUser) {
             var docRef = firebase.firestore().collection("usuario").doc(currentUser.uid);
