@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect, } from 'react'
 import { AuthContext } from "../../firebase-auth";
 import firebase from 'firebase';
-import { NavLink, useHistory, useLocation } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import {CardItem,CardInput, CardButton} from '../../components/Card/Card.elements';
 import {Card} from '../../components/index';
-import { MdOutlineAdd, MdOutlineAddCircleOutline } from "react-icons/md";
+import { MdOutlineAdd} from "react-icons/md";
 
 export function Edit(){
 
@@ -12,7 +12,6 @@ export function Edit(){
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
     const [email, setEmail] = useState('');
-    const [ddd, setDDD] = useState('');
     const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
     const [password, setPassword] = useState('');
@@ -31,7 +30,6 @@ export function Edit(){
                     setName(doc.data().nome);
                     setSurname(doc.data().sobrenome);
                     setEmail(doc.data().email);
-                    setDDD(doc.data().ddd);
                     setPhone(doc.data().telefone);
                     setAddress(doc.data().endereco);
                     
@@ -68,7 +66,7 @@ export function Edit(){
     return(
     
         <>
-            <Card  cardTitle="Atualizar Cadastro" cardButton="Cadastrar">
+            <Card error={errorMessage} cardTitle="Atualizar Cadastro" cardButton="Cadastrar">
                 <CardItem>
                     <CardInput disabled={true} value={name} onChange={e => {setName(e.target.value)}} placeholder="Nome" inputWidth="50%"></CardInput>
                     <CardInput disabled={true} value={surname} onChange={e => {setSurname(e.target.value)}} placeholder="Sobrenome" inputWidth="50%"></CardInput>
@@ -88,7 +86,6 @@ export function Edit(){
                 <CardItem>
                     <CardInput value={passwordRepeat} type="password" onChange={e => {setPasswordRepeat(e.target.value)}} placeholder="Repita sua senha" inputWidth="100%"></CardInput>
                 </CardItem>
-                <h6>{errorMessage}</h6>
                 <CardButton onClick={ () => atualizarUsuario()}>Salvar<MdOutlineAdd/></CardButton>
             </Card>
         </>     

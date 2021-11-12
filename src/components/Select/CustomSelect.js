@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect} from 'react'
+import React from 'react'
 import Select from 'react-select'
 
 export const CustomSelect = ({options, width, onChange, placeholder}) => {

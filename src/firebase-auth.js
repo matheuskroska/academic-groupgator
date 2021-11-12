@@ -7,20 +7,6 @@ export const AuthProvider = ({children}) => {
     const [currentUser, setCurrentUser] = useState(null);
     const [pending, setPending] = useState(true);
 
-    // useEffect(() => {
-    //     firebase.auth().onAuthStateChanged((user) => {
-    //             setPending(false)
-    //             var docRef = firebase.firestore().collection("usuario").doc(user.uid);
-    //             docRef.get().then((doc) => {
-    //                 if (doc.exists){
-    //                     setCurrentUser(doc.data()); 
-    //                 }    
-    //             }).catch((error) => {
-    //                 console.log("Error getting document:", error);
-    //             }); 
-    //     });
-    // }, [currentUser]);
-
      useEffect(() => {
         firebase.auth().onAuthStateChanged((user) => {
             setCurrentUser(user)

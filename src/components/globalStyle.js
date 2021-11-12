@@ -36,7 +36,6 @@ export const GlobalStyle = createGlobalStyle`
         font: inherit;
         vertical-align: baseline;
     }
-    @import url('fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
     /* HTML5 display-role reset for older browsers */
     article, aside, details, figcaption, figure, 
     footer, header, hgroup, menu, nav, section {

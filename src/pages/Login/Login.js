@@ -30,6 +30,7 @@ export const Login = () => {
                         break;
                     case "auth/invalid-password":
                         setErrorMessage("O valor fornecido para a propriedade do usuário password é inválido");
+                        break;
                     default:
                         setErrorMessage("Email ou Senha incorretos!");
                         break;

@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {NavLeft,NavRight,NavCenter, NavProfile, NavSidebar} from "../Header/Header.elements"
 import firebase from 'firebase';
 import { NavLink} from "react-router-dom";
-import {MdPowerSettingsNew,MdAccountCircle, MdSettings, MdExpandMore, MdOutlineAdd, MdPets } from "react-icons/md";
+import {MdPowerSettingsNew,MdAccountCircle, MdSettings, MdExpandMore, MdOutlineAdd } from "react-icons/md";
 import {CustomSelect} from "../index";
 import { CardButton } from '../Card/Card.elements';
 
@@ -30,7 +30,7 @@ export const HeaderLogado = ({name, logo}) => {
             </NavSidebar>
             <NavLeft onClick={toggleSidebar}>
                 <NavLink exact activeClassName="active" to="/">
-                    <img src={logo}></img>
+                    <img alt="groupgator-logo" src={logo}></img>
                 </NavLink>
                 <p>GroupGator</p>
             </NavLeft> 
@@ -48,7 +48,7 @@ export const HeaderLogado = ({name, logo}) => {
                         <MdExpandMore/>
                     </p>
                     <NavLink exact activeClassName="active" to="/edit">
-                    <a ><MdSettings/></a>
+                        <MdSettings/>
                     </NavLink>
                     <a onClick={() => signOut()}><MdPowerSettingsNew/></a>
             </NavRight>

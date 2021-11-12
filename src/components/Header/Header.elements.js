@@ -96,9 +96,6 @@ export const NavCenter = styled(NavBase)`
         margin: initial
     }
 
-    /* a:hover div{
-        background-color:green;
-    } */
     
 `
 

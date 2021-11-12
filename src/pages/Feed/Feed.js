@@ -26,7 +26,6 @@ export const Feed = (props) => {
         infinite: false
     };
 
-    const [estado, setEstado] = useState();
     const [pesquisa, setPesquisa] = useState('');
 
     const groupdata = useUser()
@@ -49,14 +48,6 @@ export const Feed = (props) => {
         return usuario
     }
 
-    const options2 = [
-        { value: '2', label: '2 Pessoas'},
-        { value: '4', label: '4 Pessoas'},
-        { value: '6', label: '6 Pessoas'},
-        { value: '8', label: '8 Pessoas'},
-        { value: '10', label: '10 Pessoas'},
-        { value: '12', label: '12 Pessoas'},
-    ]
 
     return (
         <>
@@ -65,7 +56,7 @@ export const Feed = (props) => {
                     <Slider {...settings}>
                          {groupdata.length > 0 ? groupdata.filter((val) => {
                             console.log(pesquisa)
-                            if(pesquisa == "") {
+                            if(pesquisa === "") {
                             return val
                             } else if (val.nome.toLowerCase().includes(pesquisa.toLowerCase())) {
                             return val

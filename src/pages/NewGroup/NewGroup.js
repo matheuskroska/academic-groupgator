@@ -1,17 +1,15 @@
-import React, {useContext, useState, useEffect} from 'react'
+import React, {useContext, useState} from 'react'
 import {CardItem,CardInput,CardButton} from '../../components/Card/Card.elements';
 import {Card, CustomSelect} from '../../components/index';
 import firebase from 'firebase';
-import {Redirect } from "react-router";
-import { NavLink, useHistory, useLocation  } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import { AuthContext } from "../../firebase-auth";
-import DatePicker, {registerLocale, setDefaultLocale} from "react-datepicker";
+import DatePicker, {registerLocale} from "react-datepicker";
 import { MdOutlineAdd} from "react-icons/md";
 import pt from 'date-fns/locale/pt';
 import "react-datepicker/dist/react-datepicker.css";
 import './DatePicker.css';
 import moment from 'moment'
-import Select from 'react-select'
 
 
 registerLocale('pt', pt)
@@ -45,18 +43,13 @@ export const NewGroup = () => {
         return currentDate.getTime() < selectedDate.getTime();
     };
 
-    const[value, setValue] = useState('')
     const { currentUser } = useContext(AuthContext);
     const [evento, setEvento] = useState('');
     const [esporte, setEsporte] = useState('');
     const [tipo, setTipo] = useState('');
     const [limite, setLimite] = useState('');
-    const [email, setEmail] = useState('');
     const [address, setAddress] = useState('');
     const [startDate, setStartDate] = useState('');
-    const [password, setPassword] = useState('');
-    const [passwordRepeat, setPasswordRepeat] = useState('');
-
     const [loadingStatus, setLoadingStatus] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
@@ -84,6 +77,7 @@ export const NewGroup = () => {
                         break;
                     case "auth/weak-password":
                         setErrorMessage("A senha é fraca!");
+                        break;
                     default:
                         setErrorMessage("Preencha todos os campos!");
                         break;

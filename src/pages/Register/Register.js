@@ -5,13 +5,9 @@ import { CardItem, CardInput, CardButton } from '../../components/Card/Card.elem
 import { Card } from '../../components/index';
 import { Redirect } from "react-router";
 import { AuthContext } from "../../firebase-auth";
-import { MdOutlineAdd, MdOutlineAddCircleOutline } from "react-icons/md";
+import { MdOutlineAdd} from "react-icons/md";
 
 export const Register = () => {
-
-    const emailValidator = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    const passwordValidator = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
-
 
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
@@ -24,44 +20,6 @@ export const Register = () => {
 
     const [loadingStatus, setLoadingStatus] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-
-    // const [nameError, setNameError] = useState("");
-    // const [surnameError, setSurnameError] = useState("");
-    // const [emailError, setEmailError] = useState("");
-    // const [dddError, setDDDError] = useState("");
-    // const [phoneError, setPhoneError] = useState("");
-    // const [addressError, setAddressError] = useState("");
-    // const [passwordError, setPasswordError] = useState("");
-    // const [passwordRepeatError, setPasswordRepeatError] = useState("");
-    // const [validateStatus, setValidateStatus] = useState(false)
-
-    // const validateField = () => {
-    //      if (name.trim() === "") {
-    //         setNameError("First Name is required")
-    //         setValidateStatus(false)
-    //      }else{
-    //         setValidateStatus(true) 
-    //      }            
-    //      if (surname.trim() === ""){
-    //         setSurnameError("Last Name is required")
-    //         setValidateStatus(false)
-    //      }else {
-    //         setValidateStatus(true) 
-    //      }
-
-    //      if (emailError.trim() === "") {
-    //         setEmailError("Password is required")
-    //         setValidateStatus(false)
-    //      } else if (!emailValidator.test(email)) {
-    //         setEmailError("Email is not valid")
-    //         setValidateStatus(false)
-    //      } else {
-    //         setValidateStatus(true) 
-    //      }
-
-    // }
-
-
 
     const cadastrarUsuario = () => {
         setLoadingStatus("flex");
@@ -91,6 +49,7 @@ export const Register = () => {
                         break;
                     case "auth/weak-password":
                         setErrorMessage("A senha é fraca!");
+                        break;
                     default:
                         setErrorMessage("Preencha todos os campos!");
                         break;

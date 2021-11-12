@@ -17,7 +17,7 @@ export const Home = (props) => {
         <>
             <HomeContainer>
                 <HomeWrapper>
-                    <HomeColumn><img src={logo}></img></HomeColumn>
+                    <HomeColumn><img alt="groupgator-logo" src={logo}></img></HomeColumn>
                     <HomeColumn>
                         <h1>GroupGator</h1>
                         <h2>find them!</h2>

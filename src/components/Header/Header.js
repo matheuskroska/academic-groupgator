@@ -35,14 +35,14 @@ export const Header = () => {
     }, [currentUser])
 
     return (
-        <>{usePathname() != "/" ?
+        <>{usePathname() !== "/" ?
             <NavContainer >
                 <NavWrapper>
                     {!currentUser ? (
                         <>
                             <NavLeft>
                                 <NavLink exact activeClassName="active" to="/">
-                                    <img src={logo}></img>
+                                    <img alt="groupgador-logo" src={logo}></img>
                                     <p>GroupGator</p>
                                 </NavLink>
                             </NavLeft>
